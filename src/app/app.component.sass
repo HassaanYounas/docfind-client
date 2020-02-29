@@ -1,0 +1,43 @@
+$dark-pink: #fc0071
+$medium-pink: #ff2e70
+$grey: #e5e5e5
+$btn-color: #239beb
+
+.hover-fade:hover
+    transition: 0.2s ease-in
+    opacity: 0.5
+
+.active
+    opacity: 0.5
+
+.btn
+    color: white
+    font-family: 'Nunito', sans-serif
+    background-color: $btn-color
+    border-radius: 30px
+    padding: 10px 50px
+    font-size: 20px
+    transition: 0.2s ease-in
+
+    &:hover
+        color: white
+        box-shadow: 0 0 5px 3px #333333
+    
+    &:active
+        color: white
+        transition: 0.2s ease-out
+        transform: scale(0.8)
+
+html
+    body
+        font-family: 'Nunito', sans-serif
+        background: linear-gradient(to bottom right, $medium-pink, $dark-pink)
+        overflow-x: hidden
+        position: relative
+        min-height: 100%
+
+.footer
+    background-color: #fc0058
+    padding: 15px
+    padding-top: 20px
+    box-shadow: 0 0 2px 0.1px #222222
