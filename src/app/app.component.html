@@ -7,9 +7,9 @@
             <span class="h3">DocFind</span>
         </a>
         <div class="navbar-nav ml-auto">
-            <a (click)="setCurrentNavLink('home')" [ngClass]="(getCurrentNavLink() === 'home') ? 'active' : ''" class="nav-item nav-link text-white h5 my-auto mr-3 hover-fade" routerLink="">Home</a>
-            <a (click)="setCurrentNavLink('patient')" [ngClass]="(getCurrentNavLink() === 'patient') ? 'active' : ''" class="nav-item nav-link text-white h5 my-auto mr-3 hover-fade" routerLink="/patient">Patient</a>
-            <a (click)="setCurrentNavLink('doctor')" [ngClass]="(getCurrentNavLink() === 'doctor') ? 'active' : ''" class="nav-item nav-link text-white h5 my-auto mr-3 hover-fade" routerLink="/doctor">Doctor</a>
+            <a [ngClass]="setHomeActive()" class="nav-item nav-link text-white h5 my-auto mr-3 hover-fade" routerLink="">Home</a>
+            <a [ngClass]="setPatientActive()" class="nav-item nav-link text-white h5 my-auto mr-3 hover-fade" routerLink="/patient">Patient</a>
+            <a [ngClass]="setDoctorActive()" class="nav-item nav-link text-white h5 my-auto mr-3 hover-fade" routerLink="/doctor">Doctor</a>
         </div>
     </nav>
     

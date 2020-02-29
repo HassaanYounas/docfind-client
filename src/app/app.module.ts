@@ -5,25 +5,23 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home';
 import { PatientComponent } from './patient';
 import { DoctorComponent } from './doctor';
+import { PatientSignupComponent } from './patient/patient-signup';
 
 import { AppRoutingModule } from './app.routing';
-
-import { CurrentNavLinkService } from '../services/current-nav-link.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     PatientComponent,
-    DoctorComponent
+    DoctorComponent,
+    PatientSignupComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [
-    CurrentNavLinkService
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
