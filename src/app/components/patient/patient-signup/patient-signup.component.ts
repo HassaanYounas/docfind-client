@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DialCodesService } from '../../../services/dial-codes.service';
 
 @Component({
   selector: 'app-patient-signup',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PatientSignupComponent implements OnInit {
 
-  constructor() { }
+  dialCodes: any;
+
+  constructor(private countryCodes: DialCodesService) { }
 
   ngOnInit(): void {
+    this.dialCodes = this.countryCodes.getDialCodes();
   }
 
 }

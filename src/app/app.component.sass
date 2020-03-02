@@ -3,6 +3,14 @@ $medium-pink: #ff2e70
 $grey: #e5e5e5
 $btn-color: #239beb
 
+html
+    body
+        font-family: 'Nunito', sans-serif
+        background: linear-gradient(to bottom right, $medium-pink, $dark-pink)
+        overflow-x: hidden
+        position: relative
+        min-height: 100%
+
 .hover-fade:hover
     transition: 0.2s ease-in
     opacity: 0.5
@@ -28,13 +36,21 @@ $btn-color: #239beb
         transition: 0.2s ease-out
         transform: scale(0.8)
 
-html
-    body
-        font-family: 'Nunito', sans-serif
-        background: linear-gradient(to bottom right, $medium-pink, $dark-pink)
-        overflow-x: hidden
-        position: relative
-        min-height: 100%
+.btn-dropdown
+    border: none
+    transition: 0.2s ease-in
+    background-color: $dark-pink
+    color: white
+    border-radius: 4px
+    padding-left: 10px
+    padding-right: 10px
+
+    &:hover
+        color: white
+        opacity: 0.6
+
+.dial-code-list-item
+    cursor: pointer
 
 .footer
     background-color: #fc0058

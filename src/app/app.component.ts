@@ -33,4 +33,5 @@ export class AppComponent {
     const regex = new RegExp('^/doctor.*');
     return regex.test(this.current) ? 'active' : '';
   }
+  
 }

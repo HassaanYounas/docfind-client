@@ -2,10 +2,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home';
-import { PatientComponent } from './patient';
-import { DoctorComponent } from './doctor';
-import { PatientSignupComponent } from './patient/patient-signup';
+import { HomeComponent } from './components/home';
+import { PatientComponent } from './components/patient';
+import { DoctorComponent } from './components/doctor';
+import { PatientSignupComponent } from './components/patient/patient-signup';
 
 import { AppRoutingModule } from './app.routing';
 
