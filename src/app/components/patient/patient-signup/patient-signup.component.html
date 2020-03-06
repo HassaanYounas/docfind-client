@@ -32,9 +32,9 @@
         <div class="col">
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                  <button id="dialCodeBtn" class="btn-dropdown mr-2 dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Code</button>
+                  <button id="dialCodeBtn" class="btn-dropdown mr-2 dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" [innerHTML]="countryCode"></button>
                   <div class="dropdown-menu scrollable-menu">
-                      <li class="dropdown-item dial-code-list-item" *ngFor="let code of dialCodes">{{ code.country }} (+{{ code.code }})</li>
+                      <li class="dropdown-item dial-code-list-item" (click)="setCountryCode(code.code)" *ngFor="let code of dialCodes">{{ code.country }} (+{{ code.code }})</li>
                   </div>
                 </div>
                 <input type="text" class="form-control" aria-label="Contact" placeholder="Cellular Number">

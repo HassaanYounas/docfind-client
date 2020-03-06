@@ -9,11 +9,17 @@ import { DialCodesService } from '../../../services/dial-codes.service';
 export class PatientSignupComponent implements OnInit {
 
   dialCodes: any;
+  countryCode: string;
 
   constructor(private countryCodes: DialCodesService) { }
 
   ngOnInit(): void {
     this.dialCodes = this.countryCodes.getDialCodes();
+    this.countryCode = 'Code';
+  }
+
+  setCountryCode(code: string): void {
+    this.countryCode = '+' + code;
   }
 
 }
