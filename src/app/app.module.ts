@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home';
@@ -10,7 +11,10 @@ import { PatientSignupComponent } from './components/patient/patient-signup';
 import { AppRoutingModule } from './app.routing';
 import { PatientLoginComponent } from './components/patient/patient-login/patient-login.component';
 import { PatientDashboardComponent } from './components/patient/patient-dashboard/patient-dashboard.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { DoctorDashboardComponent } from './components/doctor/doctor-dashboard/doctor-dashboard.component';
+import { DoctorSignupComponent } from './components/doctor/doctor-signup/doctor-signup.component';
+import { DoctorLoginComponent } from './components/doctor/doctor-login/doctor-login.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +24,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     DoctorComponent,
     PatientSignupComponent,
     PatientLoginComponent,
-    PatientDashboardComponent
+    PatientDashboardComponent,
+    DoctorDashboardComponent,
+    DoctorSignupComponent,
+    DoctorLoginComponent
   ],
   imports: [
     BrowserModule,
