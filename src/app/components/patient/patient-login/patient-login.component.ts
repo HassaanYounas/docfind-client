@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-patient-login',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PatientLoginComponent implements OnInit {
 
-  constructor() { }
+  patientLoginForm: any;
+
+  constructor(private formBuilder: FormBuilder) {
+    this.patientLoginForm = this.formBuilder.group({
+      email: '',
+      password: ''
+    });
+  }
 
   ngOnInit(): void {
+  }
+
+  onSubmit(patientData) {
+    
   }
 
 }

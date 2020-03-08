@@ -4,46 +4,48 @@
             <h2>Create a new Patient account</h2>
         </div>
     </div>
-    <div class="row">
-        <div class="form-group col mt-3">
-            <input type="text" class="form-control" placeholder="First Name" aria-label="First Name" aria-describedby="basic-addon1">
+    <form [formGroup]="patientSignUpForm" (ngSubmit)="onSubmit(patientSignUpForm.value)">
+        <div class="row">
+            <div class="form-group col mt-3">
+                <input id="firstName" required formControlName="firstName" type="text" class="form-control" placeholder="First Name" aria-label="First Name" aria-describedby="basic-addon1">
+            </div>
+            <div class="form-group col mt-3">
+                <input id="lastName" formControlName="lastName" type="text" class="form-control" placeholder="Last Name" aria-label="Last Name" aria-describedby="basic-addon1">
+            </div>
         </div>
-        <div class="form-group col mt-3">
-            <input type="text" class="form-control" placeholder="Last Name" aria-label="Last Name" aria-describedby="basic-addon1">
+        <div class="row">
+            <div class="form-group col">
+                <input id="email" required formControlName="email" type="email" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1">
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="form-group col">
-            <input type="email" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1">
+        <div class="row">
+            <div class="form-group col">
+                <input id="password" required formControlName="password" type="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1">
+            </div>
+            <div class="form-group col">
+                <input id="confirmPassword" required formControlName="confirmPassword" type="password" class="form-control" placeholder="Confirm Password" aria-label="Confirm Password" aria-describedby="basic-addon1">
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="form-group col">
-            <input type="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1">
+        <div class="row">
+            <div class="col">
+                <input id="date" formControlName="date" required type="date" class="form-control" aria-label="Date" aria-describedby="basic-addon1">
+            </div>
+            <div class="col">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <button id="dialCodeBtn" class="btn-dropdown mr-2 dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" [innerHTML]="countryCode"></button>
+                      <div class="dropdown-menu scrollable-menu">
+                          <li class="dropdown-item dial-code-list-item" (click)="setCountryCode(code.code)" *ngFor="let code of dialCodes">{{ code.country }} (+{{ code.code }})</li>
+                      </div>
+                    </div>
+                    <input id="contact" formControlName="contact" required type="text" class="form-control" aria-label="Contact" placeholder="Cellular Number">
+                </div>    
+            </div>
         </div>
-        <div class="form-group col">
-            <input type="password" class="form-control" placeholder="Confirm Password" aria-label="Confirm Password" aria-describedby="basic-addon1">
+        <div class="row">
+            <div class="form-group col mt-3">
+                <button type="submit" class="btn">Sign Up</button>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <input type="date" class="form-control" aria-label="Date" aria-describedby="basic-addon1">
-        </div>
-        <div class="col">
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                  <button id="dialCodeBtn" class="btn-dropdown mr-2 dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" [innerHTML]="countryCode"></button>
-                  <div class="dropdown-menu scrollable-menu">
-                      <li class="dropdown-item dial-code-list-item" (click)="setCountryCode(code.code)" *ngFor="let code of dialCodes">{{ code.country }} (+{{ code.code }})</li>
-                  </div>
-                </div>
-                <input type="text" class="form-control" aria-label="Contact" placeholder="Cellular Number">
-            </div>    
-        </div>
-    </div>
-    <div class="row">
-        <div class="form-group col mt-3">
-            <button type="button" class="btn">Sign Up</button>
-        </div>
-    </div>
+    </form>
 </div>

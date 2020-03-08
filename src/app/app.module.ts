@@ -10,6 +10,7 @@ import { PatientSignupComponent } from './components/patient/patient-signup';
 import { AppRoutingModule } from './app.routing';
 import { PatientLoginComponent } from './components/patient/patient-login/patient-login.component';
 import { PatientDashboardComponent } from './components/patient/patient-dashboard/patient-dashboard.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,9 @@ import { PatientDashboardComponent } from './components/patient/patient-dashboar
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

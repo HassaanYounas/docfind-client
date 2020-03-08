@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
+
 import { DialCodesService } from '../../../services/dial-codes.service';
 
 @Component({
@@ -8,10 +10,24 @@ import { DialCodesService } from '../../../services/dial-codes.service';
 })
 export class PatientSignupComponent implements OnInit {
 
+  patientSignUpForm: any;
   dialCodes: any;
   countryCode: string;
 
-  constructor(private countryCodes: DialCodesService) { }
+  constructor(
+    private countryCodes: DialCodesService,
+    private formBuilder: FormBuilder
+  ) { 
+    this.patientSignUpForm = this.formBuilder.group({
+      firstName: '',
+      lastName: '',
+      email: '',
+      password: '',
+      confirmPassword: '',
+      date: '',
+      contact: ''
+    });
+  }
 
   ngOnInit(): void {
     this.dialCodes = this.countryCodes.getDialCodes();
@@ -20,6 +36,10 @@ export class PatientSignupComponent implements OnInit {
 
   setCountryCode(code: string): void {
     this.countryCode = '+' + code;
+  }
+
+  onSubmit(patientData) {
+    
   }
 
 }
