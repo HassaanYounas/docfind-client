@@ -26,7 +26,7 @@ export class PatientSignupComponent implements OnInit {
       email: '',
       password: '',
       confirmPassword: '',
-      date: '',
+      dob: '',
       contact: ''
     });
   }
@@ -41,6 +41,7 @@ export class PatientSignupComponent implements OnInit {
   }
 
   onSubmit(patientData) {
+    console.log(patientData.dob)
     if (this.inputValidation.isString(patientData.firstName)) {
       if (patientData.lastName === '' || this.inputValidation.isString(patientData.lastName)) {
         if (this.inputValidation.isEmail(patientData.email)) {

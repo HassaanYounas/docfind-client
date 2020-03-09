@@ -1,4 +1,4 @@
-<div class="container text-center box mt-3 mb-5">
+<div class="container text-center box mt-4 mb-5">
     <div class="row">
         <div class="col text-center">
             <h2>Create a new Patient account</h2>
@@ -7,43 +7,49 @@
     <form [formGroup]="patientSignUpForm" (ngSubmit)="onSubmit(patientSignUpForm.value)">
         <div class="row">
             <div class="form-group col mt-3">
-                <input id="firstName" required formControlName="firstName" type="text" class="form-control" placeholder="First Name" aria-label="First Name" aria-describedby="basic-addon1">
+                <input id="firstName" required formControlName="firstName" type="text" class="form-control" placeholder="First Name (e.g. Rais)" aria-label="First Name" aria-describedby="basic-addon1">
+                <p class="d-none font-weight-bold text-danger text-left ml-2 mt-2 mb-0">Invalid First Name</p>
             </div>
             <div class="form-group col mt-3">
-                <input id="lastName" formControlName="lastName" type="text" class="form-control" placeholder="Last Name" aria-label="Last Name" aria-describedby="basic-addon1">
+                <input id="lastName" formControlName="lastName" type="text" class="form-control" placeholder="Last Name (Optional)" aria-label="Last Name" aria-describedby="basic-addon1">
+                <p class="d-none font-weight-bold text-danger text-left ml-2 mt-2 mb-0">Invalid Last Name</p>
             </div>
         </div>
         <div class="row">
             <div class="form-group col">
-                <input id="email" required formControlName="email" type="email" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1">
+                <input id="email" required formControlName="email" type="email" class="form-control" placeholder="Email (e.g. raischeema@gmail.com)" aria-label="Email" aria-describedby="basic-addon1">
+                <p class="d-none font-weight-bold text-danger text-left ml-2 mt-2 mb-0">Invalid Email</p>
             </div>
         </div>
         <div class="row">
             <div class="form-group col">
-                <input id="password" required formControlName="password" type="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1">
+                <input id="password" required formControlName="password" type="password" class="form-control" placeholder="Password (at least 8 characters)" aria-label="Password" aria-describedby="basic-addon1">
+                <p class="d-none font-weight-bold text-danger text-left ml-2 mt-2 mb-0">Password should be at least 8 characters long</p>
             </div>
             <div class="form-group col">
                 <input id="confirmPassword" required formControlName="confirmPassword" type="password" class="form-control" placeholder="Confirm Password" aria-label="Confirm Password" aria-describedby="basic-addon1">
+                <p class="d-none font-weight-bold text-danger text-left ml-2 mt-2 mb-0">Passwords do not match</p>
             </div>
         </div>
         <div class="row">
             <div class="col">
-                <input id="date" formControlName="date" required type="date" class="form-control" aria-label="Date" aria-describedby="basic-addon1">
+                <input id="dob" formControlName="dob" required type="date" class="form-control" aria-label="Date" aria-describedby="basic-addon1">
             </div>
             <div class="col">
-                <div class="input-group mb-3">
+                <div class="input-group">
                     <div class="input-group-prepend">
                       <button id="dialCodeBtn" class="btn-dropdown mr-2 dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" [innerHTML]="countryCode"></button>
                       <div class="dropdown-menu scrollable-menu">
                           <li class="dropdown-item dial-code-list-item" (click)="setCountryCode(code.code)" *ngFor="let code of dialCodes">{{ code.country }} (+{{ code.code }})</li>
                       </div>
                     </div>
-                    <input id="contact" formControlName="contact" required type="text" class="form-control" aria-label="Contact" placeholder="Cellular Number">
-                </div>    
+                    <input id="contact" formControlName="contact" required type="text" class="form-control" aria-label="Contact" placeholder="Cellular Number"> 
+                </div>
+                <p class="d-none font-weight-bold text-danger text-left ml-2 mt-2 mb-0">Invalid contact (did you select country code?)</p>
             </div>
         </div>
         <div class="row">
-            <div class="form-group col mt-3">
+            <div class="form-group col mt-4">
                 <button type="submit" class="btn">Sign Up</button>
             </div>
         </div>
