@@ -4,7 +4,7 @@
             <h2>Login to your Doctor account</h2>
         </div>
     </div>
-    <form [formGroup]="patientLoginForm" (ngSubmit)="onSubmit(patientLoginForm.value)">
+    <form [formGroup]="doctorLoginForm" (ngSubmit)="onSubmit(doctorLoginForm.value)">
         <div class="row mt-4">
             <div class="form-group col mx-5">
                 <input id="email" required formControlName="email" type="email" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1">

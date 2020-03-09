@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 
 import { DialCodesService } from '../../../services/dial-codes.service';
+import { InputValidationService } from 'src/app/services/input-validation.service';
 
 @Component({
   selector: 'app-patient-signup',
@@ -16,7 +17,8 @@ export class PatientSignupComponent implements OnInit {
 
   constructor(
     private countryCodes: DialCodesService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private inputValidation: InputValidationService
   ) { 
     this.patientSignUpForm = this.formBuilder.group({
       firstName: '',
@@ -39,7 +41,17 @@ export class PatientSignupComponent implements OnInit {
   }
 
   onSubmit(patientData) {
-    
+    if (this.inputValidation.isString(patientData.firstName)) {
+      if (patientData.lastName === '' || this.inputValidation.isString(patientData.lastName)) {
+        if (this.inputValidation.isEmail(patientData.email)) {
+          if (patientData.password.length >= 8) {
+            if (patientData.password === patientData.confirmPassword) {
+              console.log('valid');
+            }
+          }
+        } 
+      } 
+    } 
   }
 
 }
