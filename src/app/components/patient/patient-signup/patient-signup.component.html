@@ -33,7 +33,7 @@
         </div>
         <div class="row">
             <div class="col">
-                <input id="dob" formControlName="dob" required type="date" class="form-control" aria-label="Date" aria-describedby="basic-addon1">
+                <input id="dateOfBirth" formControlName="dateOfBirth" required type="date" class="form-control" aria-label="Date" aria-describedby="basic-addon1">
             </div>
             <div class="col">
                 <div class="input-group">
@@ -43,7 +43,7 @@
                           <li class="dropdown-item dial-code-list-item" (click)="setCountryCode(code.code)" *ngFor="let code of dialCodes">{{ code.country }} (+{{ code.code }})</li>
                       </div>
                     </div>
-                    <input id="contact" formControlName="contact" required type="text" class="form-control" aria-label="Contact" placeholder="Cellular Number"> 
+                    <input id="cellularNumber" formControlName="cellularNumber" required type="text" class="form-control" aria-label="Contact" placeholder="Cellular Number"> 
                 </div>
                 <p class="d-none font-weight-bold text-danger text-left ml-2 mt-2 mb-0">Invalid contact (did you select country code?)</p>
             </div>
