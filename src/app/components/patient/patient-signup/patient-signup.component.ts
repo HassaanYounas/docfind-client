@@ -96,7 +96,7 @@ export class PatientSignupComponent implements OnInit {
       .subscribe(
         res => {
           if ('token' in res) {
-            localStorage.setItem('token', res.token);
+            //localStorage.setItem('token', res.token);
           }
         }
       );
