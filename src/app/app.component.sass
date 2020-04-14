@@ -1,3 +1,9 @@
+$bg-color-primary: #eae7dc
+$bg-color-secondary: #d8c3a5
+$bg-color-tertiary: #8e8d8a
+$fg-color-primary: rgb(233, 128, 116)
+$fg-color-secondary: #e85a4f
+
 $dark-pink: #fc0071
 $medium-pink: #ff2e70
 $grey: #e5e5e5
@@ -5,18 +11,21 @@ $btn-color: #239beb
 
 html
     body
-        font-family: 'Nunito', sans-serif
-        background: linear-gradient(to bottom right, $medium-pink, $dark-pink)
+        font-family: 'Baloo Paaji 2', cursive
+        background-color: $bg-color-primary
         overflow-x: hidden
         position: relative
         min-height: 100%
 
+.text-black
+    color: #000000
+
 .hover-fade:hover
-    transition: 0.2s ease-in
-    opacity: 0.5
+    transition: 0.3s ease-in-out
+    opacity: 0.3
 
 .active
-    opacity: 0.5
+    opacity: 0.3
 
 .scrollable-menu
     height: auto
@@ -24,22 +33,16 @@ html
     overflow-x: hidden
 
 .btn
-    color: white
-    font-family: 'Nunito', sans-serif
-    background-color: $btn-color
-    border-radius: 30px
-    padding: 10px 50px
+    background-color: $bg-color-primary
+    color: #000000
+    font-weight: 600
+    letter-spacing: 1.5px
+    border: 3px solid #000000
+    padding: 10px 40px
     font-size: 20px
-    transition: 0.2s ease-in
-
+    transition: 0.3s ease-in-out
     &:hover
-        color: white
-        box-shadow: 0 0 5px 3px #333333
-    
-    &:active
-        color: white
-        transition: 0.2s ease-out
-        transform: scale(0.8)
+        background-color: $bg-color-secondary
 
 .btn-dropdown
     border: none
@@ -49,7 +52,6 @@ html
     border-radius: 4px
     padding-left: 10px
     padding-right: 10px
-
     &:hover
         color: white
         opacity: 0.6
@@ -77,7 +79,5 @@ html
     margin-bottom: 140px
 
 .footer
-    background-color: #fc0058
-    padding: 15px
-    padding-top: 20px
-    box-shadow: 0 0 2px 0.1px #222222
+    background-color: $bg-color-secondary
+    padding: 30px

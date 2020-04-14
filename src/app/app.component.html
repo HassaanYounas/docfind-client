@@ -3,19 +3,19 @@
         <a class="navbar-brand pl-3" routerLink="/">
             <img src="../assets/img/logo.png" width="50" height="50" alt=""/>
         </a>
-        <a class="navbar-brand text-white" routerLink="/">
+        <a class="navbar-brand text-black" routerLink="/">
             <span class="h3">DocFind</span>
         </a>
         <div class="navbar-nav ml-auto">
-            <a [ngClass]="setHomeActive()" class="nav-item nav-link text-white h5 my-auto mr-3 hover-fade" routerLink="">Home</a>
-            <a [ngClass]="setPatientActive()" class="nav-item nav-link text-white h5 my-auto mr-3 hover-fade" routerLink="/patient">Patient</a>
-            <a [ngClass]="setDoctorActive()" class="nav-item nav-link text-white h5 my-auto mr-3 hover-fade" routerLink="/doctor">Doctor</a>
+            <a [ngClass]="setHomeActive()" class="nav-item nav-link text-black h5 my-auto mr-3 hover-fade" routerLink="">Home</a>
+            <a [ngClass]="setPatientActive()" class="nav-item nav-link text-black h5 my-auto mr-3 hover-fade" routerLink="/patient">Patient</a>
+            <a [ngClass]="setDoctorActive()" class="nav-item nav-link text-black h5 my-auto mr-3 hover-fade" routerLink="/doctor">Doctor</a>
         </div>
     </nav>
     
     <router-outlet></router-outlet>
     
-    <footer class="container-fluid footer text-white text-center">
-        <p class="h6">Made with &hearts; by Rais, Jazab and Hassaan | All Rights Reserved &copy; 2020</p>
+    <footer class="container-fluid footer text-black text-center">
+        <p class="h5 mt-3">Made with &hearts; by Rais, Jazab and Hassaan | All Rights Reserved &copy; 2020</p>
     </footer>
 </div>
