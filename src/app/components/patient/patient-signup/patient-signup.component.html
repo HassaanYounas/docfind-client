@@ -1,57 +1,33 @@
-<div class="container text-center box mt-4 mb-5">
-    <div class="row">
-        <div class="col text-center">
-            <h2>Create a new Patient account</h2>
-        </div>
-    </div>
-    <form [formGroup]="patientSignUpForm" (ngSubmit)="onSubmit(patientSignUpForm.value)">
-        <div class="row">
-            <div class="form-group col mt-3">
-                <input id="firstName" required formControlName="firstName" type="text" class="form-control" placeholder="First Name (e.g. Rais)" aria-label="First Name" aria-describedby="basic-addon1">
-                <p class="d-none font-weight-bold text-danger text-left ml-2 mt-2 mb-0">Invalid First Name</p>
-            </div>
-            <div class="form-group col mt-3">
-                <input id="lastName" formControlName="lastName" type="text" class="form-control" placeholder="Last Name (Optional)" aria-label="Last Name" aria-describedby="basic-addon1">
-                <p class="d-none font-weight-bold text-danger text-left ml-2 mt-2 mb-0">Invalid Last Name</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="form-group col">
-                <input id="email" required formControlName="email" type="email" class="form-control" placeholder="Email (e.g. raischeema@gmail.com)" aria-label="Email" aria-describedby="basic-addon1">
-                <p class="d-none font-weight-bold text-danger text-left ml-2 mt-2 mb-0">Invalid Email</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="form-group col">
-                <input id="password" required formControlName="password" type="password" class="form-control" placeholder="Password (at least 8 characters)" aria-label="Password" aria-describedby="basic-addon1">
-                <p class="d-none font-weight-bold text-danger text-left ml-2 mt-2 mb-0">Password should be at least 8 characters long</p>
-            </div>
-            <div class="form-group col">
-                <input id="confirmPassword" required formControlName="confirmPassword" type="password" class="form-control" placeholder="Confirm Password" aria-label="Confirm Password" aria-describedby="basic-addon1">
-                <p class="d-none font-weight-bold text-danger text-left ml-2 mt-2 mb-0">Passwords do not match</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <input id="dateOfBirth" formControlName="dateOfBirth" required type="date" class="form-control" aria-label="Date" aria-describedby="basic-addon1">
-            </div>
-            <div class="col">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                      <button id="dialCodeBtn" class="btn-dropdown mr-2 dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" [innerHTML]="countryCode"></button>
-                      <div class="dropdown-menu scrollable-menu">
-                          <li class="dropdown-item dial-code-list-item" (click)="setCountryCode(code.code)" *ngFor="let code of dialCodes">{{ code.country }} (+{{ code.code }})</li>
-                      </div>
+<div class="mb-5">
+    <div class="container w-50 text-center section-sign-up">
+        <h2>Create a new Patient account</h2>
+        <form class="section-form mt-3" [formGroup]="patientSignUpForm" (ngSubmit)="onSubmit(patientSignUpForm.value)">
+            <input id="firstName" required formControlName="firstName" type="text" class="form-control form-control-custom" placeholder="First Name">
+            <h6 class="d-none font-weight-bold text-danger mt-2">Invalid first name</h6>
+            <input id="lastName" formControlName="lastName" type="text" class="form-control form-control-custom mt-3" placeholder="Last Name">
+            <h6 class="d-none font-weight-bold text-danger mt-2">Invalid last name</h6>
+            <input id="email" required formControlName="email" type="email" class="form-control form-control-custom mt-2" placeholder="Email">
+            <h6 class="d-none font-weight-bold text-danger mt-2">Invalid email</h6>
+            <input id="password" required formControlName="password" type="password" class="form-control form-control-custom mt-3" placeholder="Password">
+            <h6 class="d-none font-weight-bold text-danger mt-2">Password should be at least 8 characters long</h6> 
+            <input id="confirmPassword" required formControlName="confirmPassword" type="password" class="form-control form-control-custom mt-3" placeholder="Confirm Password">
+            <h6 class="d-none font-weight-bold text-danger mt-2">Passwords do not match</h6>
+            <input id="dateOfBirth" formControlName="dateOfBirth" required type="date" class="form-control form-control-custom mt-3">
+            <h6 class="d-none font-weight-bold text-danger mt-2">Invalid date of birth</h6> 
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <button id="dialCodeBtn" class="btn-dropdown mt-3 mr-3 dropdown-toggle" type="button" data-toggle="dropdown" [innerHTML]="countryCode"></button>
+                    <div class="dropdown-menu scrollable-menu">
+                        <li class="dropdown-item dial-code-list-item" (click)="setCountryCode(code.code)" *ngFor="let code of dialCodes">{{ code.country }} (+{{ code.code }})</li>
                     </div>
-                    <input id="cellularNumber" formControlName="cellularNumber" required type="text" class="form-control" aria-label="Contact" placeholder="Cellular Number"> 
                 </div>
-                <p class="d-none font-weight-bold text-danger text-left ml-2 mt-2 mb-0">Invalid contact (did you select country code?)</p>
+                <input id="cellularNumber" formControlName="cellularNumber" required type="text" class="form-control form-control-custom mt-3" placeholder="Cellular Number"> 
             </div>
-        </div>
-        <div class="row">
-            <div class="form-group col mt-4">
-                <button type="submit" class="btn">Sign Up</button>
-            </div>
-        </div>
-    </form>
+            <h6 class="d-none font-weight-bold text-danger mt-2">Invalid contact (did you select country code?)</h6>
+            <button type="submit" class="btn mt-4">Sign Up</button>
+        </form>
+    </div>
+    <svg class="mb-5" viewBox="0 0 1440 220">
+        <path fill="#e98074" d="M0,256L0,320L62.6,320L62.6,96L125.2,96L125.2,160L187.8,160L187.8,224L250.4,224L250.4,320L313,320L313,256L375.7,256L375.7,128L438.3,128L438.3,224L500.9,224L500.9,192L563.5,192L563.5,32L626.1,32L626.1,256L688.7,256L688.7,32L751.3,32L751.3,128L813.9,128L813.9,288L876.5,288L876.5,64L939.1,64L939.1,192L1001.7,192L1001.7,320L1064.3,320L1064.3,64L1127,64L1127,64L1189.6,64L1189.6,160L1252.2,160L1252.2,320L1314.8,320L1314.8,96L1377.4,96L1377.4,288L1440,288L1440,0L1377.4,0L1377.4,0L1314.8,0L1314.8,0L1252.2,0L1252.2,0L1189.6,0L1189.6,0L1127,0L1127,0L1064.3,0L1064.3,0L1001.7,0L1001.7,0L939.1,0L939.1,0L876.5,0L876.5,0L813.9,0L813.9,0L751.3,0L751.3,0L688.7,0L688.7,0L626.1,0L626.1,0L563.5,0L563.5,0L500.9,0L500.9,0L438.3,0L438.3,0L375.7,0L375.7,0L313,0L313,0L250.4,0L250.4,0L187.8,0L187.8,0L125.2,0L125.2,0L62.6,0L62.6,0L0,0L0,0Z"></path>
+    </svg>
 </div>

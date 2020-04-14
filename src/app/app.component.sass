@@ -1,7 +1,7 @@
 $bg-color-primary: #eae7dc
 $bg-color-secondary: #d8c3a5
 $bg-color-tertiary: #8e8d8a
-$fg-color-primary: rgb(233, 128, 116)
+$fg-color-primary: #e98074
 $fg-color-secondary: #e85a4f
 
 $dark-pink: #fc0071
@@ -33,7 +33,7 @@ html
     overflow-x: hidden
 
 .btn
-    background-color: $bg-color-primary
+    background-color: white
     color: #000000
     font-weight: 600
     letter-spacing: 1.5px
@@ -43,27 +43,30 @@ html
     transition: 0.3s ease-in-out
     &:hover
         background-color: $bg-color-secondary
-
-.btn-dropdown
-    border: none
-    transition: 0.2s ease-in
-    background-color: $dark-pink
-    color: white
-    border-radius: 4px
-    padding-left: 10px
-    padding-right: 10px
-    &:hover
-        color: white
-        opacity: 0.6
+    &-dropdown
+        background-color: white
+        color: #000000
+        font-weight: 600
+        letter-spacing: 1.5px
+        border: 3px solid #000000
+        transition: 0.3s ease-in-out
+        &:hover
+            background-color: $bg-color-secondary
 
 .dial-code-list-item
     cursor: pointer
 
-.box
-    background-color: $grey
-    border-radius: 10px
-    padding: 70px 150px 50px 150px
-    
+.section
+    &-authenticate
+        padding: 70px
+        margin-top: 70px
+        margin-bottom: 140px
+    &-sign-up
+        background-color: $fg-color-primary
+        padding: 60px 0
+    &-form
+        padding: 0 135px
+
 .box-spacing
     background-color: $grey
     border-radius: 10px
@@ -71,12 +74,13 @@ html
     margin-top: 60px
     margin-bottom: 110px
 
-.registration-options
-    background-color: $grey
-    border-radius: 10px
-    padding: 70px
-    margin-top: 70px
-    margin-bottom: 140px
+.form-control-custom
+    font-weight: 600
+    border: 3px solid #000000
+    border-radius: 0
+    background-color: #ffffff
+    padding: 5px 10px
+    font-size: 18px
 
 .footer
     background-color: $bg-color-secondary
