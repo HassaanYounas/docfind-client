@@ -1,7 +1,7 @@
-<div class="mb-5">
+<div class="mt-3 mb-5">
     <div class="container w-50 text-center section-sign-up">
-        <h2>Create a new Patient account</h2>
-        <form class="section-form mt-3" [formGroup]="patientSignUpForm" (ngSubmit)="onSubmit(patientSignUpForm.value)">
+        <h2>Create a new account</h2>
+        <form class="section-form my-3" [formGroup]="signUpForm" (ngSubmit)="onSubmit(signUpForm.value)">
             <input id="firstName" required formControlName="firstName" type="text" class="form-control form-control-custom" placeholder="First Name">
             <h6 class="d-none font-weight-bold text-danger mt-2">Invalid first name</h6>
             <input id="lastName" formControlName="lastName" type="text" class="form-control form-control-custom mt-3" placeholder="Last Name">
@@ -18,7 +18,7 @@
                 <div class="input-group-prepend">
                     <button id="dialCodeBtn" class="btn-dropdown mt-3 mr-3 dropdown-toggle" type="button" data-toggle="dropdown" [innerHTML]="countryCode"></button>
                     <div class="dropdown-menu scrollable-menu">
-                        <li class="dropdown-item dial-code-list-item" (click)="setCountryCode(code.code)" *ngFor="let code of dialCodes">{{ code.country }} (+{{ code.code }})</li>
+                        <li class="font-weight-bold dropdown-item dropdown-list-item" (click)="setCountryCode(code.code)" *ngFor="let code of dialCodes">{{ code.country }} (+{{ code.code }})</li>
                     </div>
                 </div>
                 <input id="cellularNumber" formControlName="cellularNumber" required type="text" class="form-control form-control-custom mt-3" placeholder="Cellular Number"> 
@@ -26,6 +26,9 @@
             <h6 class="d-none font-weight-bold text-danger mt-2">Invalid contact (did you select country code?)</h6>
             <button type="submit" class="btn mt-4">Sign Up</button>
         </form>
+        <p class="text-black h5">
+            or <a class="h5" routerLink="/user/login">Login</a>
+        </p>
     </div>
     <svg class="mb-5" viewBox="0 0 1440 220">
         <path fill="#e98074" d="M0,256L0,320L62.6,320L62.6,96L125.2,96L125.2,160L187.8,160L187.8,224L250.4,224L250.4,320L313,320L313,256L375.7,256L375.7,128L438.3,128L438.3,224L500.9,224L500.9,192L563.5,192L563.5,32L626.1,32L626.1,256L688.7,256L688.7,32L751.3,32L751.3,128L813.9,128L813.9,288L876.5,288L876.5,64L939.1,64L939.1,192L1001.7,192L1001.7,320L1064.3,320L1064.3,64L1127,64L1127,64L1189.6,64L1189.6,160L1252.2,160L1252.2,320L1314.8,320L1314.8,96L1377.4,96L1377.4,288L1440,288L1440,0L1377.4,0L1377.4,0L1314.8,0L1314.8,0L1252.2,0L1252.2,0L1189.6,0L1189.6,0L1127,0L1127,0L1064.3,0L1064.3,0L1001.7,0L1001.7,0L939.1,0L939.1,0L876.5,0L876.5,0L813.9,0L813.9,0L751.3,0L751.3,0L688.7,0L688.7,0L626.1,0L626.1,0L563.5,0L563.5,0L500.9,0L500.9,0L438.3,0L438.3,0L375.7,0L375.7,0L313,0L313,0L250.4,0L250.4,0L187.8,0L187.8,0L125.2,0L125.2,0L62.6,0L62.6,0L0,0L0,0Z"></path>

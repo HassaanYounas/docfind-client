@@ -7,14 +7,13 @@
             <span class="h3">DocFind</span>
         </a>
         <div class="navbar-nav ml-auto">
-            <a [ngClass]="setHomeActive()" class="nav-item nav-link text-black h5 my-auto mr-3 hover-fade" routerLink="">Home</a>
-            <a [ngClass]="setPatientActive()" class="nav-item nav-link text-black h5 my-auto mr-3 hover-fade" routerLink="/patient">Patient</a>
-            <a [ngClass]="setDoctorActive()" class="nav-item nav-link text-black h5 my-auto mr-3 hover-fade" routerLink="/doctor">Doctor</a>
+            <a [ngClass]="setActive('^((?!^\/user$|\/user\/dashboard|^\/user\/signup|^\/user\/login).)*$')" class="nav-item nav-link text-black h5 my-auto mr-3 hover-fade" routerLink="/">Home</a>
+            <a [ngClass]="setActive('^\/user$|\/user\/dashboard')" class="nav-item nav-link text-black h5 my-auto mr-3 hover-fade" routerLink="/user">Dashboard</a>
+            <a [ngClass]="setActive('^\/user\/signup')" class="nav-item nav-link text-black h5 my-auto mr-3 hover-fade" routerLink="/user/signup">Sign Up</a>
+            <a [ngClass]="setActive('^\/user\/login')" class="nav-item nav-link text-black h5 my-auto mr-3 hover-fade" routerLink="/user/login">Login</a>
         </div>
     </nav>
-    
     <router-outlet></router-outlet>
-    
     <footer class="container-fluid footer text-black text-center">
         <p class="h5 mt-3">Made with &hearts; by Rais, Jazab and Hassaan | All Rights Reserved &copy; 2020</p>
     </footer>

@@ -20,18 +20,8 @@ export class AppComponent {
       });
   }
 
-  setHomeActive(): string {
-    return this.current === '/' ? 'active' : '';
-  }
-
-  setPatientActive(): string {
-    const regex = new RegExp('^/patient.*');
+  setActive(regexStr: string): string {
+    const regex = new RegExp(regexStr);
     return regex.test(this.current) ? 'active' : '';
   }
-
-  setDoctorActive(): string {
-    const regex = new RegExp('^/doctor.*');
-    return regex.test(this.current) ? 'active' : '';
-  }
-
 }

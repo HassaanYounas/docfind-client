@@ -3,23 +3,23 @@ import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { Patient } from '../../../models/patient.model';
+import { User } from '../../../models/user.model';
 
 import { DialCodesService } from '../../../services/dial-codes.service';
 import { InputValidationService } from 'src/app/services/input-validation.service';
 
 @Component({
-  selector: 'app-patient-signup',
-  templateUrl: './patient-signup.component.html',
-  styleUrls: ['./patient-signup.component.sass']
+  selector: 'app-user-signup',
+  templateUrl: './user-signup.component.html',
+  styleUrls: ['./user-signup.component.sass']
 })
-export class PatientSignupComponent implements OnInit {
+export class UserSignupComponent implements OnInit {
 
-  patientSignUpForm: any;
+  signUpForm: any;
   dialCodes: any;
   countryCode: string;
 
-  private patient: Patient;
+  private user: User;
 
   constructor(
     private countryCodes: DialCodesService,
@@ -28,8 +28,8 @@ export class PatientSignupComponent implements OnInit {
     private http: HttpClient,
     private router: Router
   ) {
-    this.patient = new Patient();
-    this.patientSignUpForm = this.formBuilder.group({
+    this.user = new User();
+    this.signUpForm = this.formBuilder.group({
       firstName: '',
       lastName: '',
       email: '',
@@ -49,17 +49,17 @@ export class PatientSignupComponent implements OnInit {
     this.countryCode = '+' + code;
   }
 
-  onSubmit(patientData: any): void {
-    if (this.inputValidation.isString(patientData.firstName)) {
-      if (patientData.lastName === '' || this.inputValidation.isString(patientData.lastName)) {
-        if (this.inputValidation.isEmail(patientData.email)) {
-          if (patientData.password.length >= 8) {
-            if (patientData.password === patientData.confirmPassword) {
+  onSubmit(userData: any): void {
+    if (this.inputValidation.isString(userData.firstName)) {
+      if (userData.lastName === '' || this.inputValidation.isString(userData.lastName)) {
+        if (this.inputValidation.isEmail(userData.email)) {
+          if (userData.password.length >= 8) {
+            if (userData.password === userData.confirmPassword) {
               if (this.countryCode !== 'Code') {
-                this.patient.setValues(patientData, this.countryCode);
+                this.user.setValues(userData, this.countryCode);
                 this.register();
                 if (localStorage.getItem('token')) {
-                  this.router.navigate(['patient/dashboard']);
+                  this.router.navigate(['user/dashboard']);
                 }
               }
             }
@@ -70,9 +70,9 @@ export class PatientSignupComponent implements OnInit {
   }
 
   register(): void {
-    const patientJson = JSON.stringify(this.patient);
-    const url = 'http://localhost:3000/patient/register';
-    const body = patientJson;
+    const userJson = JSON.stringify(this.user);
+    const url = 'http://localhost:3000/user/register';
+    const body = userJson;
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     this.http.post(url, body, { headers })
       .subscribe(
@@ -86,10 +86,10 @@ export class PatientSignupComponent implements OnInit {
   }
 
   authenticate(): void {
-    const url = 'http://localhost:3000/patient/authenticate';
+    const url = 'http://localhost:3000/user/authenticate';
     const body = {
-      email: this.patient.email,
-      password: this.patient.password
+      email: this.user.email,
+      password: this.user.password
     };
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     this.http.post(url, body, { headers })
@@ -101,5 +101,4 @@ export class PatientSignupComponent implements OnInit {
         }
       );
   }
-
 }
