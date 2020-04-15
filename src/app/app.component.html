@@ -1,15 +1,13 @@
 <div>
     <nav class="navbar navbar-expand p-3">
-        <a class="navbar-brand pl-3" routerLink="/">
+        <a class="navbar-brand pl-3">
             <img src="../assets/img/logo.png" width="50" height="50" alt=""/>
         </a>
-        <a class="navbar-brand text-black" routerLink="/">
-            <span class="h3">DocFind</span>
+        <a class="navbar-brand text-black pointer">
+            <span class="h3" routerLink="/">DocFind</span>
         </a>
         <div class="navbar-nav ml-auto">
-            <a [ngClass]="setActive('^((?!^\/user$|\/user\/dashboard|^\/user\/signup|^\/user\/login).)*$') + ' ' + isLoggedIn()" class="nav-item nav-link text-black h5 my-auto mr-3 hover-fade" routerLink="/">Home</a>
-            <a [ngClass]="setActive('^\/user$|\/user\/dashboard|\/user\/signup|\/user\/login') + ' ' + isLoggedIn()" class="nav-item nav-link text-black h5 my-auto mr-3 hover-fade" routerLink="/user">Dashboard</a>
-            <a [ngClass]="showLogOut()" class="nav-item nav-link text-black h5 my-auto mr-3 hover-fade pointer">Log Out</a>
+            <a [ngClass]="setActive('^\/user$|\/user\/dashboard|\/user\/signup|\/user\/login')" class="nav-item nav-link text-black h5 my-auto mr-3 link pointer" routerLink="/user/dashboard">My Account</a>
         </div>
     </nav>
     <router-outlet></router-outlet>

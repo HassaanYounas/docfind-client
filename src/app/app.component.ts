@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { Router, NavigationEnd  } from '@angular/router';
 
 import { filter } from 'rxjs/operators';  
@@ -8,7 +8,7 @@ import { filter } from 'rxjs/operators';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.sass']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
   private loggedIn: boolean;
   private current: string;
@@ -19,24 +19,14 @@ export class AppComponent {
       .subscribe((event: NavigationEnd) => {
         this.current = event.url;
       });
-    if (localStorage.getItem('token')) {
-      this.loggedIn = true;
-      this.router.navigate(['/user/dashboard']);
-    } else {
-      this.loggedIn = false;
-    }
+  }
+
+  ngOnInit(): void {
+   
   }
 
   setActive(regexStr: string): string {
     const regex = new RegExp(regexStr);
     return regex.test(this.current) ? 'active' : '';
-  }
-
-  isLoggedIn(): string {
-    return this.loggedIn ? 'd-none' : '';
-  }
-
-  showLogOut(): string {
-    return !this.loggedIn ? 'd-none': '';
   }
 }
