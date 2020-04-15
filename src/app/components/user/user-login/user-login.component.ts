@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { InputValidationService } from 'src/app/services/input-validation.service';
 import { UserAuthService } from 'src/app/services/user-auth.service';
-import { Router } from '@angular/router';
 import { User } from 'src/app/models/user.model';
 
 @Component({
@@ -10,14 +9,12 @@ import { User } from 'src/app/models/user.model';
   templateUrl: './user-login.component.html',
   styleUrls: ['./user-login.component.sass']
 })
-export class UserLoginComponent implements OnInit {
+export class UserLoginComponent {
 
   loginForm: any;
-  
   private user: User;
 
   constructor(
-    private router: Router,
     private formBuilder: FormBuilder,
     private inputValidation: InputValidationService,
     private userAuth: UserAuthService
@@ -27,9 +24,6 @@ export class UserLoginComponent implements OnInit {
       password: ''
     });
     this.user = new User();
-  }
-
-  ngOnInit(): void {
   }
 
   onSubmit(userData: any): void {

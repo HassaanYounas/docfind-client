@@ -13,5 +13,4 @@ export class DialCodesService {
   getDialCodes(): any {
     return this.dialCodes
   }
-
 }

@@ -1,11 +1,9 @@
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './components/home';
-
 import { UserComponent } from './components/user';
 import { UserSignupComponent } from './components/user/user-signup';
 import { UserLoginComponent } from './components/user/user-login';
 import { UserDashboardComponent } from './components/user/user-dashboard';
-
 import { AuthGuardService } from './services/auth-guard.service';
 import { HomeGuardService } from './services/home-guard.service';
 

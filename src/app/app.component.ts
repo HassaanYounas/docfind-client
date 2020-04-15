@@ -1,6 +1,5 @@
-import { Component, OnInit, NgZone } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router, NavigationEnd  } from '@angular/router';
-
 import { filter } from 'rxjs/operators';  
 
 @Component({
@@ -8,9 +7,8 @@ import { filter } from 'rxjs/operators';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.sass']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
 
-  private loggedIn: boolean;
   private current: string;
 
   constructor(private router: Router) {
@@ -19,10 +17,6 @@ export class AppComponent implements OnInit {
       .subscribe((event: NavigationEnd) => {
         this.current = event.url;
       });
-  }
-
-  ngOnInit(): void {
-   
   }
 
   setActive(regexStr: string): string {

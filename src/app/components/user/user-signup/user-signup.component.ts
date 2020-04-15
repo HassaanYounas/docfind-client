@@ -1,9 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { Router } from '@angular/router';
-
 import { User } from '../../../models/user.model';
-
 import { DialCodesService } from '../../../services/dial-codes.service';
 import { InputValidationService } from '../../../services/input-validation.service'; 
 import { UserAuthService } from '../../../services/user-auth.service';
@@ -13,7 +10,7 @@ import { UserAuthService } from '../../../services/user-auth.service';
   templateUrl: './user-signup.component.html',
   styleUrls: ['./user-signup.component.sass']
 })
-export class UserSignupComponent implements OnInit {
+export class UserSignupComponent {
 
   signUpForm: any;
   dialCodes: any;
@@ -23,8 +20,7 @@ export class UserSignupComponent implements OnInit {
 
   constructor(
     private countryCodes: DialCodesService,
-    private formBuilder: FormBuilder,    
-    private router: Router,
+    private formBuilder: FormBuilder,
     private inputValidation: InputValidationService,
     private userAuth: UserAuthService
   ) {
@@ -38,9 +34,6 @@ export class UserSignupComponent implements OnInit {
       cellularNumber: '',
       dateOfBirth: ''
     });
-  }
-
-  ngOnInit(): void {
     this.dialCodes = this.countryCodes.getDialCodes();
     this.countryCode = 'Code';
   }
