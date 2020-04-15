@@ -18,7 +18,7 @@
                 <div class="input-group-prepend">
                     <button id="dialCodeBtn" class="btn-dropdown mt-3 mr-3 dropdown-toggle" type="button" data-toggle="dropdown" [innerHTML]="countryCode"></button>
                     <div class="dropdown-menu scrollable-menu">
-                        <li class="font-weight-bold dropdown-item dropdown-list-item" (click)="setCountryCode(code.code)" *ngFor="let code of dialCodes">{{ code.country }} (+{{ code.code }})</li>
+                        <li class="font-weight-bold dropdown-item pointer" (click)="setCountryCode(code.code)" *ngFor="let code of dialCodes">{{ code.country }} (+{{ code.code }})</li>
                     </div>
                 </div>
                 <input id="cellularNumber" formControlName="cellularNumber" required type="text" class="form-control form-control-custom mt-3" placeholder="Cellular Number"> 

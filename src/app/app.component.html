@@ -7,10 +7,9 @@
             <span class="h3">DocFind</span>
         </a>
         <div class="navbar-nav ml-auto">
-            <a [ngClass]="setActive('^((?!^\/user$|\/user\/dashboard|^\/user\/signup|^\/user\/login).)*$')" class="nav-item nav-link text-black h5 my-auto mr-3 hover-fade" routerLink="/">Home</a>
-            <a [ngClass]="setActive('^\/user$|\/user\/dashboard')" class="nav-item nav-link text-black h5 my-auto mr-3 hover-fade" routerLink="/user">Dashboard</a>
-            <a [ngClass]="setActive('^\/user\/signup')" class="nav-item nav-link text-black h5 my-auto mr-3 hover-fade" routerLink="/user/signup">Sign Up</a>
-            <a [ngClass]="setActive('^\/user\/login')" class="nav-item nav-link text-black h5 my-auto mr-3 hover-fade" routerLink="/user/login">Login</a>
+            <a [ngClass]="setActive('^((?!^\/user$|\/user\/dashboard|^\/user\/signup|^\/user\/login).)*$') + ' ' + isLoggedIn()" class="nav-item nav-link text-black h5 my-auto mr-3 hover-fade" routerLink="/">Home</a>
+            <a [ngClass]="setActive('^\/user$|\/user\/dashboard|\/user\/signup|\/user\/login') + ' ' + isLoggedIn()" class="nav-item nav-link text-black h5 my-auto mr-3 hover-fade" routerLink="/user">Dashboard</a>
+            <a [ngClass]="showLogOut()" class="nav-item nav-link text-black h5 my-auto mr-3 hover-fade pointer">Log Out</a>
         </div>
     </nav>
     <router-outlet></router-outlet>

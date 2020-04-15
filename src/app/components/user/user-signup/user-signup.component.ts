@@ -57,9 +57,6 @@ export class UserSignupComponent implements OnInit {
             if (this.countryCode !== 'Code') {
               this.user.setValues(userData, this.countryCode);
               this.userAuth.register(this.user);
-              if (localStorage.getItem('token')) {
-                this.router.navigate(['/user/dashboard']);
-              }
             }
           }
         }

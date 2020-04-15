@@ -12,9 +12,4 @@ export class UserDashboardComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  logOut() {
-    localStorage.removeItem('token');
-    this.router.navigate(['/user']);
-  }
 }
