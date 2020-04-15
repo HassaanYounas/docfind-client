@@ -3,17 +3,17 @@
         <h2>Create a new account</h2>
         <form class="section-form my-3" [formGroup]="signUpForm" (ngSubmit)="onSubmit(signUpForm.value)">
             <input id="firstName" required formControlName="firstName" type="text" class="form-control form-control-custom" placeholder="First Name">
-            <h6 class="d-none font-weight-bold text-danger mt-2">Invalid first name</h6>
+            <h6 [ngClass]="{'d-none': validFirstName}" class="font-weight-bold text-danger mt-2">Invalid first name</h6>
             <input id="lastName" formControlName="lastName" type="text" class="form-control form-control-custom mt-3" placeholder="Last Name">
-            <h6 class="d-none font-weight-bold text-danger mt-2">Invalid last name</h6>
+            <h6 [ngClass]="{'d-none': validLastName}" class="font-weight-bold text-danger mt-2">Invalid last name</h6>
             <input id="email" required formControlName="email" type="email" class="form-control form-control-custom mt-2" placeholder="Email">
-            <h6 class="d-none font-weight-bold text-danger mt-2">Invalid email</h6>
+            <h6 [ngClass]="{'d-none': validEmail}" class="font-weight-bold text-danger mt-2">Invalid email</h6>
             <input id="password" required formControlName="password" type="password" class="form-control form-control-custom mt-3" placeholder="Password">
-            <h6 class="d-none font-weight-bold text-danger mt-2">Password should be at least 8 characters long</h6> 
+            <h6 [ngClass]="{'d-none': validPassword}" class="font-weight-bold text-danger mt-2">Password should be at least 8 characters long</h6> 
             <input id="confirmPassword" required formControlName="confirmPassword" type="password" class="form-control form-control-custom mt-3" placeholder="Confirm Password">
-            <h6 class="d-none font-weight-bold text-danger mt-2">Passwords do not match</h6>
+            <h6 [ngClass]="{'d-none': validPasswordConfirm}" class="font-weight-bold text-danger mt-2">Passwords do not match</h6>
             <input id="dateOfBirth" formControlName="dateOfBirth" required type="date" class="form-control form-control-custom mt-3">
-            <h6 class="d-none font-weight-bold text-danger mt-2">Invalid date of birth</h6> 
+            <h6 [ngClass]="{'d-none': validDOB}" class="font-weight-bold text-danger mt-2">Invalid date of birth</h6> 
             <div class="input-group">
                 <div class="input-group-prepend">
                     <button id="dialCodeBtn" class="btn-dropdown mt-3 mr-3 dropdown-toggle" type="button" data-toggle="dropdown" [innerHTML]="countryCode"></button>
@@ -23,7 +23,7 @@
                 </div>
                 <input id="cellularNumber" formControlName="cellularNumber" required type="text" class="form-control form-control-custom mt-3" placeholder="Cellular Number"> 
             </div>
-            <h6 class="d-none font-weight-bold text-danger mt-2">Invalid contact (did you select country code?)</h6>
+            <h6 [ngClass]="{'d-none': validCellular}" class="font-weight-bold text-danger mt-2">Invalid contact (did you select country code?)</h6>
             <button type="submit" class="btn mt-4">Sign Up</button>
         </form>
         <p class="text-black h5">
