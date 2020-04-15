@@ -21,5 +21,4 @@ export class InputValidationService {
     const regex = /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/;
     return str.match(regex) ? true : false;
   }
-
 }
