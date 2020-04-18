@@ -1,49 +1,37 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { User } from '../models/user.model';
-import { Router } from '@angular/router';
+import { throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserAuthService {
 
-  constructor(
-    private http: HttpClient,
-    private router: Router
-  ) {}
+  constructor(private http: HttpClient) {}
 
-  register(user: User): void {
+  register(user: User) {
     const userJson = JSON.stringify(user);
     const url = 'http://localhost:3000/user/register';
     const body = userJson;
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    this.http.post(url, body, { headers })
-      .subscribe(
-        res => {
-          if (Object.keys(res).length === 0) this.authenticate(user);
-        },
-        err => {
-          console.log(err);
-        }
-      );
+    return this.http.post(url, body, { headers });
   }
 
-  authenticate(user: User): void {
+  authenticate(user: User) {
     const url = 'http://localhost:3000/user/authenticate';
     const body = {
       email: user.email,
       password: user.password
     };
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    this.http.post(url, body, { headers })
-      .subscribe(
-        (res: any) => {
-          if ('token' in res) {
-            localStorage.setItem('token', res.token);
-            this.router.navigate(['/']);
-          }
-        }
-      );
+    return this.http.post(url, body, { headers }).pipe(
+      catchError(this.errorHandler)
+    );
+  }
+
+  private errorHandler(error: HttpErrorResponse) {
+    return throwError(error.error.message);
   }
 }

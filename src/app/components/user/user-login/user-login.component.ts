@@ -11,7 +11,11 @@ import { User } from 'src/app/models/user.model';
 })
 export class UserLoginComponent {
 
+  validEmail: boolean = true;
+  validEmailPassword: boolean = true;
+  authError: string;
   loginForm: any;
+  
   private user: User;
 
   constructor(
@@ -27,12 +31,21 @@ export class UserLoginComponent {
   }
 
   onSubmit(userData: any): void {
-    if (this.inputValidation.isEmail(userData.email)) {
-      if (userData.password.length >= 8) {
-        this.user.email = userData.email;
-        this.user.password = userData.password;
-        this.userAuth.authenticate(this.user);
-      }
+    this.validEmail = !this.inputValidation.isEmail(userData.email) ? false : true;
+    if (this.validEmail) {
+      this.user.email = userData.email;
+      this.user.password = userData.password;
+      this.userAuth.authenticate(this.user)
+        .subscribe(
+          (res: any) => {
+            this.validEmailPassword = true;
+            console.log(res);
+          },
+          (err: any) => {
+            this.authError = err;
+            this.validEmailPassword = false;
+          }
+        );
     }
   }
 }   
