@@ -1,7 +1,6 @@
 export class User {
     accountType: number;
-    firstName: string;
-    lastName: string;
+    fullName: string;
     email: string;
     password: string;
     cellularNumber: string;
@@ -9,12 +8,11 @@ export class User {
 
     constructor() {
         this.accountType = -1;
-        this.firstName = this.lastName = this.email = this.password = this.cellularNumber = this.dateOfBirth = '';
+        this.fullName = this.email = this.password = this.cellularNumber = this.dateOfBirth = '';
     }
 
     setValues(data: any, countryCode: string): void {
-        this.firstName = data.firstName;
-        this.lastName = data.lastName;
+        this.fullName = data.fullName;
         this.email = data.email;
         this.password = data.password;
         this.cellularNumber = countryCode + data.cellularNumber;

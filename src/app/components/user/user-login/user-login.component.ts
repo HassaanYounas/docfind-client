@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { InputValidationService } from 'src/app/services/input-validation.service';
-import { UserAuthService } from 'src/app/services/user-auth.service';
+import { APIService } from 'src/app/services/api.service';
 import { User } from 'src/app/models/user.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-login',
@@ -21,7 +22,8 @@ export class UserLoginComponent {
   constructor(
     private formBuilder: FormBuilder,
     private inputValidation: InputValidationService,
-    private userAuth: UserAuthService
+    private api: APIService,
+    private router: Router
   ) {
     this.loginForm = this.formBuilder.group({
       email: '',
@@ -35,11 +37,14 @@ export class UserLoginComponent {
     if (this.validEmail) {
       this.user.email = userData.email;
       this.user.password = userData.password;
-      this.userAuth.authenticate(this.user)
+      this.api.authenticate(this.user)
         .subscribe(
           (res: any) => {
             this.validEmailPassword = true;
-            console.log(res);
+            if (res.token !== '') {
+              localStorage.setItem('token', res.token);
+              this.router.navigate(['/']);
+            }
           },
           (err: any) => {
             this.authError = err;
