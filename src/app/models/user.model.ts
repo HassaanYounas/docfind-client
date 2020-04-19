@@ -28,6 +28,13 @@ export class User {
         this.dateOfBirth = data.dateOfBirth;
     }
 
+    setDoctorForPatient(data: any): void {
+        this.fullName = data.fullName;
+        this.email = data.email;
+        this.cellularNumber = data.cellularNumber;
+        this.dateOfBirth = data.dateOfBirth;
+    }
+
     setAccountType(accountType: number): void {
         this.accountType = accountType;
     }

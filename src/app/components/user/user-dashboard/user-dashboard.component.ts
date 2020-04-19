@@ -11,6 +11,7 @@ import { APIService } from 'src/app/services/api.service';
 export class UserDashboardComponent {
 
   userName: string;
+  doctors: User[];
 
   private user: User;
   
@@ -18,14 +19,27 @@ export class UserDashboardComponent {
     private router: Router,
     private api: APIService
   ) {
+    this.doctors = new Array<User>();
     this.api.getUser()
-        .subscribe(
-          (res: any) => {
-            if (Object.keys(res).length !== 0) {
-              this.initializeUI(res);
-            }
+      .subscribe(
+        (res: any) => {
+          if (Object.keys(res).length !== 0) {
+            this.initializeUI(res);
           }
-        );
+        }
+      );
+    this.api.getDoctors()
+      .subscribe(
+        (res: any) => {
+          if (Object.keys(res).length !== 0) {
+            res.forEach(doc => {
+              let doctor = new User();
+              doctor.setDoctorForPatient(doc);
+              this.doctors.push(doctor);
+            });
+          }
+        }
+      );
   }
 
   initializeUI(res: any) {
@@ -33,14 +47,7 @@ export class UserDashboardComponent {
     this.user.assignUser(res);
     this.userName = 'Hi! ' + this.user.fullName;
 
-    this.api.getDoctors()
-      .subscribe(
-        (res: any) => {
-          if (Object.keys(res).length !== 0) {
-            console.log(res);
-          }
-        }
-      );
+   
   }
 
   logOut(): void {

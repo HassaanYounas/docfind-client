@@ -21,30 +21,10 @@
         <div class="container-fluid p-4">
             <h4 class="text-center">Available Doctors</h4>
             <ul class="list-group list-group-custom mx-5 mt-3">
-                <li class="list-item mb-3">
+                <li class="list-item mb-3" *ngFor="let doctor of doctors">
                     <div class="row">
                         <div class="col d-flex">
-                            <h5 class="my-auto">🖤 Mohsin Ali | Mon-Fri | 5pm-10pm</h5>
-                        </div>
-                        <div class="col d-flex justify-content-end">
-                            <button class="btn-appointment">Get Appoinment</button>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-item mb-3">
-                    <div class="row">
-                        <div class="col d-flex">
-                            <h5 class="my-auto">🖤 Mohsin Ali | Mon-Fri | 5pm-10pm</h5>
-                        </div>
-                        <div class="col d-flex justify-content-end">
-                            <button class="btn-appointment">Get Appoinment</button>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-item mb-3">
-                    <div class="row">
-                        <div class="col d-flex">
-                            <h5 class="my-auto">🖤 Mohsin Ali | Mon-Fri | 5pm-10pm</h5>
+                            <h5 class="my-auto">🖤 {{ doctor.fullName }} | Mon-Fri | 5pm-10pm</h5>
                         </div>
                         <div class="col d-flex justify-content-end">
                             <button class="btn-appointment">Get Appoinment</button>
