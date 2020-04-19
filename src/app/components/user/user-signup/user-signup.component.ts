@@ -81,6 +81,7 @@ export class UserSignupComponent {
                   (res: any) => {
                     if (res.token !== '') {
                       localStorage.setItem('token', res.token);
+                      localStorage.setItem('_id', res._id);
                       this.router.navigate(['/']);
                     }
                   }

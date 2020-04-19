@@ -20,6 +20,14 @@ export class User {
         this.dateOfBirth = data.dateOfBirth;
     }
 
+    assignUser(data: any): void {
+        this.accountType = data.accountType;
+        this.fullName = data.fullName;
+        this.email = data.email;
+        this.cellularNumber = data.cellularNumber;
+        this.dateOfBirth = data.dateOfBirth;
+    }
+
     setAccountType(accountType: number): void {
         this.accountType = accountType;
     }

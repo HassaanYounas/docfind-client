@@ -1,4 +1,5 @@
 {
     "userRegister": "http://localhost:3000/user/register",
-    "userAuthenticate": "http://localhost:3000/user/authenticate"
+    "userAuthenticate": "http://localhost:3000/user/authenticate",
+    "userGet": "http://localhost:3000/user/get"
 }

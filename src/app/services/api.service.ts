@@ -30,6 +30,18 @@ export class APIService {
     return this.http.post(url, body, { headers }).pipe(catchError(this.errorHandler));
   }
 
+  getUser() {
+    const url = API.userGet;
+    const body = {
+      '_id': localStorage.getItem('_id')
+    }
+    const headers = new HttpHeaders({ 
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${localStorage.getItem('token')}` 
+    });
+    return this.http.post(url, body, { headers }).pipe(catchError(this.errorHandler));
+  }
+
   private errorHandler(error: HttpErrorResponse) {
     return throwError(error.error.message);
   }

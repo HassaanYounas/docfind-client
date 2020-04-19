@@ -42,7 +42,9 @@ export class UserLoginComponent {
           (res: any) => {
             this.validEmailPassword = true;
             if (res.token !== '') {
+              console.log(res);
               localStorage.setItem('token', res.token);
+              localStorage.setItem('_id', res._id);
               this.router.navigate(['/']);
             }
           },
