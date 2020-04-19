@@ -19,10 +19,12 @@ export class UserSignupComponent {
   validPasswordConfirm: boolean = true;
   validDOB: boolean = true;
   validCellular: boolean = true;
+  validAccountType: boolean = true;
 
   signUpForm: any;
   dialCodes: any;
   countryCode: string;
+  accountType: string;
 
   private user: User;
 
@@ -44,10 +46,15 @@ export class UserSignupComponent {
     });
     this.dialCodes = this.countryCodes.getDialCodes();
     this.countryCode = 'Code';
+    this.accountType = 'Account Type';
   }
 
   setCountryCode(code: string): void {
     this.countryCode = '+' + code;
+  }
+
+  setAccountType(type: string): void {
+    this.accountType = type;
   }
 
   onSubmit(userData: any): void {
@@ -57,9 +64,14 @@ export class UserSignupComponent {
     this.validPasswordConfirm = !(userData.password === userData.confirmPassword) ? false : true;
     this.validDOB = userData.dateOfBirth === '' ? false : true;
     this.validCellular = !(this.countryCode !== 'Code' && this.inputValidation.isPhoneNumber(userData.cellularNumber)) ? false : true;
+    this.validAccountType = !(this.accountType !== 'Account Type') ? false : true;
 
-    if (this.validFullName && this.validEmail && this.validPassword && this.validPasswordConfirm && this.validDOB && this.validCellular) {
-      this.user.setValues(userData, this.countryCode);
+    if (this.validFullName && this.validEmail && this.validPassword && this.validPasswordConfirm && this.validDOB && this.validCellular && this.validAccountType) {
+      if (this.accountType === 'Patient') {
+        this.user.setValues(userData, this.countryCode, 1);
+      } else {
+        this.user.setValues(userData, this.countryCode, 2);
+      }
       this.api.register(this.user)
         .subscribe(
           (res: any) => {

@@ -4,7 +4,7 @@
         <form class="section-form my-3" [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
             <input id="email" required formControlName="email" type="email" class="form-control form-control-custom mt-2" placeholder="Email">
             <h6 [ngClass]="{'d-none': validEmail}" class="font-weight-bold text-danger mt-2">Invalid email</h6>
-            <input id="password" required formControlName="password" type="password" class="form-control form-control-custom mt-3" placeholder="Password">
+            <input id="password" required formControlName="password" type="password" class="form-control form-control-custom mt-2" placeholder="Password">
             <h6 [ngClass]="{'d-none': validEmailPassword}" class="font-weight-bold text-danger mt-2" [innerHTML]="authError"></h6> 
             <button type="submit" class="btn mt-4">Login</button>
         </form>

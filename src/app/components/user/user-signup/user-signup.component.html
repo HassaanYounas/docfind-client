@@ -6,23 +6,33 @@
             <h6 [ngClass]="{'d-none': validFullName}" class="font-weight-bold text-danger mt-2">Invalid name</h6>
             <input id="email" required formControlName="email" type="email" class="form-control form-control-custom mt-2" placeholder="Email">
             <h6 [ngClass]="{'d-none': validEmail}" class="font-weight-bold text-danger mt-2">Invalid email</h6>
-            <input id="password" required formControlName="password" type="password" class="form-control form-control-custom mt-3" placeholder="Password">
+            <input id="password" required formControlName="password" type="password" class="form-control form-control-custom mt-2" placeholder="Password">
             <h6 [ngClass]="{'d-none': validPassword}" class="font-weight-bold text-danger mt-2">Password should be at least 8 characters long</h6> 
-            <input id="confirmPassword" required formControlName="confirmPassword" type="password" class="form-control form-control-custom mt-3" placeholder="Confirm Password">
+            <input id="confirmPassword" required formControlName="confirmPassword" type="password" class="form-control form-control-custom mt-2" placeholder="Confirm Password">
             <h6 [ngClass]="{'d-none': validPasswordConfirm}" class="font-weight-bold text-danger mt-2">Passwords do not match</h6>
-            <input id="dateOfBirth" formControlName="dateOfBirth" required type="date" class="form-control form-control-custom mt-3">
+            <input id="dateOfBirth" formControlName="dateOfBirth" required type="date" class="form-control form-control-custom mt-2">
             <h6 [ngClass]="{'d-none': validDOB}" class="font-weight-bold text-danger mt-2">Invalid date of birth</h6> 
-            <div class="input-group">
+            <div class="mt-2 input-group">
                 <div class="input-group-prepend">
-                    <button id="dialCodeBtn" class="btn-dropdown mt-3 mr-3 dropdown-toggle" type="button" data-toggle="dropdown" [innerHTML]="countryCode"></button>
+                    <button id="dialCodeBtn" class="btn-dropdown mr-2 dropdown-toggle" type="button" data-toggle="dropdown" [innerHTML]="countryCode"></button>
                     <div class="dropdown-menu scrollable-menu">
                         <li class="font-weight-bold dropdown-item pointer" (click)="setCountryCode(code.code)" *ngFor="let code of dialCodes">{{ code.country }} (+{{ code.code }})</li>
                     </div>
                 </div>
-                <input id="cellularNumber" formControlName="cellularNumber" required type="text" class="form-control form-control-custom mt-3" placeholder="Cellular Number"> 
+                <input id="cellularNumber" formControlName="cellularNumber" required type="text" class="form-control form-control-custom" placeholder="Cellular Number"> 
             </div>
             <h6 [ngClass]="{'d-none': validCellular}" class="font-weight-bold text-danger mt-2">Invalid contact (did you select country code?)</h6>
-            <button type="submit" class="btn mt-4">Sign Up</button>
+            <div class="mx-auto mt-2 input-group">
+                <div class="input-group-prepend mx-auto">
+                    <button id="accountTypeBtn" class="btn-dropdown px-4 py-2 dropdown-toggle" type="button" data-toggle="dropdown" [innerHTML]="accountType"></button>
+                    <div class="dropdown-menu scrollable-menu">
+                        <li class="font-weight-bold dropdown-item pointer" (click)="setAccountType('Patient')">Patient</li>
+                        <li class="font-weight-bold dropdown-item pointer" (click)="setAccountType('Doctor')">Doctor</li>
+                    </div>
+                </div>
+            </div>
+            <h6 [ngClass]="{'d-none': validAccountType}" class="font-weight-bold text-danger mt-2">Please select an account type</h6>
+            <button type="submit" class="btn mt-3">Sign Up</button>
         </form>
         <p class="text-black h5">
             or <a class="h5 link" routerLink="/user/login">Login</a>

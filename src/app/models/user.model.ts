@@ -11,7 +11,8 @@ export class User {
         this.fullName = this.email = this.password = this.cellularNumber = this.dateOfBirth = '';
     }
 
-    setValues(data: any, countryCode: string): void {
+    setValues(data: any, countryCode: string, accountType: number): void {
+        this.accountType = accountType;
         this.fullName = data.fullName;
         this.email = data.email;
         this.password = data.password;
