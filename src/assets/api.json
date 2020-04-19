@@ -1,5 +1,6 @@
 {
     "userRegister": "http://localhost:3000/user/register",
     "userAuthenticate": "http://localhost:3000/user/authenticate",
-    "userGet": "http://localhost:3000/user/get"
+    "userGet": "http://localhost:3000/user/get",
+    "doctorsGet": "http://localhost:3000/user/alldoctors"
 }

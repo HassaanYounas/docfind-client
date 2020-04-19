@@ -1,3 +1,60 @@
-<div class="container text-center">
-    <button class="btn" (click)="logOut()">Log Out</button>    
+<div>
+    <div class="container section-dashboard">
+        <div class="row p-4 section-user">
+            <div class="col">
+                <h3 class="py-1 my-auto" [innerHTML]="userName"></h3>
+            </div>
+            <div class="col d-flex justify-content-end">
+                <div class="btn-group">
+                    <button type="button" class="btn-settings" data-toggle="dropdown"></button>
+                    <div class="dropdown-menu my-2">
+                      <a class="font-weight-bold dropdown-item dropdown-item-custom pointer">Settings</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="font-weight-bold dropdown-item dropdown-item-custom pointer" (click)="logOut()">Log Out</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container section-dashboard mt-5">
+        <div class="container-fluid p-4">
+            <h4 class="text-center">Available Doctors</h4>
+            <ul class="list-group list-group-custom mx-5 mt-3">
+                <li class="list-item mb-3">
+                    <div class="row">
+                        <div class="col d-flex">
+                            <h5 class="my-auto">🖤 Mohsin Ali | Mon-Fri | 5pm-10pm</h5>
+                        </div>
+                        <div class="col d-flex justify-content-end">
+                            <button class="btn-appointment">Get Appoinment</button>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-item mb-3">
+                    <div class="row">
+                        <div class="col d-flex">
+                            <h5 class="my-auto">🖤 Mohsin Ali | Mon-Fri | 5pm-10pm</h5>
+                        </div>
+                        <div class="col d-flex justify-content-end">
+                            <button class="btn-appointment">Get Appoinment</button>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-item mb-3">
+                    <div class="row">
+                        <div class="col d-flex">
+                            <h5 class="my-auto">🖤 Mohsin Ali | Mon-Fri | 5pm-10pm</h5>
+                        </div>
+                        <div class="col d-flex justify-content-end">
+                            <button class="btn-appointment">Get Appoinment</button>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <svg class="mb-5" viewBox="0 0 1440 320">
+        <path fill="#e98074" d="M0,192L0,256L53.3,256L53.3,32L106.7,32L106.7,128L160,128L160,128L213.3,128L213.3,64L266.7,64L266.7,96L320,96L320,64L373.3,64L373.3,288L426.7,288L426.7,288L480,288L480,128L533.3,128L533.3,160L586.7,160L586.7,32L640,32L640,320L693.3,320L693.3,160L746.7,160L746.7,224L800,224L800,256L853.3,256L853.3,160L906.7,160L906.7,128L960,128L960,288L1013.3,288L1013.3,96L1066.7,96L1066.7,128L1120,128L1120,96L1173.3,96L1173.3,32L1226.7,32L1226.7,192L1280,192L1280,288L1333.3,288L1333.3,256L1386.7,256L1386.7,32L1440,32L1440,0L1386.7,0L1386.7,0L1333.3,0L1333.3,0L1280,0L1280,0L1226.7,0L1226.7,0L1173.3,0L1173.3,0L1120,0L1120,0L1066.7,0L1066.7,0L1013.3,0L1013.3,0L960,0L960,0L906.7,0L906.7,0L853.3,0L853.3,0L800,0L800,0L746.7,0L746.7,0L693.3,0L693.3,0L640,0L640,0L586.7,0L586.7,0L533.3,0L533.3,0L480,0L480,0L426.7,0L426.7,0L373.3,0L373.3,0L320,0L320,0L266.7,0L266.7,0L213.3,0L213.3,0L160,0L160,0L106.7,0L106.7,0L53.3,0L53.3,0L0,0L0,0Z"></path>
+    </svg>
 </div>

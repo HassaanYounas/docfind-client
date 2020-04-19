@@ -1,13 +1,4 @@
-$bg-color-primary: #eae7dc
-$bg-color-secondary: #d8c3a5
-$bg-color-tertiary: #8e8d8a
-$fg-color-primary: #e98074
-$fg-color-secondary: #e85a4f
-
-$dark-pink: #fc0071
-$medium-pink: #ff2e70
-$grey: #e5e5e5
-$btn-color: #239beb
+@import '../assets/sass-variables.sass'
 
 html
     body
@@ -32,10 +23,21 @@ html
 .active
     opacity: 0.3
 
-.scrollable-menu
+.dropdown-menu
+    border-radius: 0
+    border: 3px solid #000000 
     height: auto
     max-height: 200px
     overflow-x: hidden
+
+.dropdown-item-custom
+    transition: 0.1s ease-in-out
+    &:hover
+        background-color: $bg-color-secondary
+
+.list-group-custom
+    background-color: $fg-color-secondary
+    padding: 65px 100px 50px 100px
 
 .list-item
         font-size: 18px
@@ -47,7 +49,6 @@ html
         padding: 20px
         border: 3px solid #000000 
         font-weight: 600
-        margin-bottom: 20px
         cursor: pointer
         &:hover
             left: 15px
@@ -73,6 +74,21 @@ html
         letter-spacing: 1.5px
         border: 3px solid #000000
         transition: 0.3s ease-in-out
+        &:focus
+            box-shadow: none
+        &:hover
+            background-color: $bg-color-secondary
+    &-appointment
+        background-color: white
+        color: #000000
+        font-weight: 600
+        letter-spacing: 1.5px
+        border: 3px solid #000000
+        padding: 5px 10px
+        font-size: 16px
+        transition: 0.3s ease-in-out
+        &:focus
+            box-shadow: none
         &:hover
             background-color: $bg-color-secondary
 

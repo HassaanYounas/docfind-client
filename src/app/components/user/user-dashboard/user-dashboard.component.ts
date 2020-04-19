@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user.model';
 import { APIService } from 'src/app/services/api.service';
@@ -8,27 +8,39 @@ import { APIService } from 'src/app/services/api.service';
   templateUrl: './user-dashboard.component.html',
   styleUrls: ['./user-dashboard.component.sass']
 })
-export class UserDashboardComponent implements OnInit {
+export class UserDashboardComponent {
+
+  userName: string;
 
   private user: User;
-
+  
   constructor(
     private router: Router,
     private api: APIService
   ) {
-    this.user = new User();
     this.api.getUser()
         .subscribe(
           (res: any) => {
             if (Object.keys(res).length !== 0) {
-              this.user.assignUser(res);
+              this.initializeUI(res);
             }
           }
         );
   }
 
-  ngOnInit() {
-    
+  initializeUI(res: any) {
+    this.user = new User();
+    this.user.assignUser(res);
+    this.userName = 'Hi! ' + this.user.fullName;
+
+    this.api.getDoctors()
+      .subscribe(
+        (res: any) => {
+          if (Object.keys(res).length !== 0) {
+            console.log(res);
+          }
+        }
+      );
   }
 
   logOut(): void {

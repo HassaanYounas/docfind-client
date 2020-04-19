@@ -42,6 +42,15 @@ export class APIService {
     return this.http.post(url, body, { headers }).pipe(catchError(this.errorHandler));
   }
 
+  getDoctors() {
+    const url = API.doctorsGet;
+    const headers = new HttpHeaders({ 
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${localStorage.getItem('token')}` 
+    });
+    return this.http.get(url, { headers }).pipe(catchError(this.errorHandler));
+  }
+
   private errorHandler(error: HttpErrorResponse) {
     return throwError(error.error.message);
   }
