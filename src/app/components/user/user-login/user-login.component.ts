@@ -7,8 +7,7 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-login',
-  templateUrl: './user-login.component.html',
-  styleUrls: ['./user-login.component.sass']
+  templateUrl: './user-login.component.html'
 })
 export class UserLoginComponent {
 
@@ -37,22 +36,6 @@ export class UserLoginComponent {
     if (this.validEmail) {
       this.user.email = userData.email;
       this.user.password = userData.password;
-      this.api.authenticate(this.user)
-        .subscribe(
-          (res: any) => {
-            this.validEmailPassword = true;
-            if (res.token !== '') {
-              console.log(res);
-              localStorage.setItem('token', res.token);
-              localStorage.setItem('_id', res._id);
-              this.router.navigate(['/']);
-            }
-          },
-          (err: any) => {
-            this.authError = err;
-            this.validEmailPassword = false;
-          }
-        );
     }
   }
 }   

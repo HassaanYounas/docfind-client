@@ -12,26 +12,38 @@ export class APIService {
 
   constructor(private http: HttpClient) {}
 
-  register(user: User) {
-    const userJson = JSON.stringify(user);
-    const url = API.userRegister;
-    const body = userJson;
+  patientRegister(patient: User) {
+    const patientJson = JSON.stringify(patient);
+    const url = API.patientRegister;
+    const body = patientJson;
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.post(url, body, { headers }).pipe(catchError(this.errorHandler));
   }
 
-  authenticate(user: User) {
-    const url = API.userAuthenticate;
+  patientAuthenticate(patient: User) {
+    const url = API.authenticatePatient;
     const body = {
-      email: user.email,
-      password: user.password
+      email: patient.email,
+      password: patient.password
     };
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.post(url, body, { headers }).pipe(catchError(this.errorHandler));
   }
 
-  getUser() {
-    const url = API.userGet;
+  doctorRegister(doctor: User) {
+    const doctorJson = JSON.stringify(doctor);
+    const url = API.doctorRegister;
+    const body = doctorJson;
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.post(url, body, { headers }).pipe(catchError(this.errorHandler));
+  }
+
+  updatePatient() {
+
+  }
+
+  getPatient() {
+    const url = API.getPatientByID;
     const body = {
       '_id': localStorage.getItem('_id')
     }
@@ -42,14 +54,14 @@ export class APIService {
     return this.http.post(url, body, { headers }).pipe(catchError(this.errorHandler));
   }
 
-  getDoctors() {
-    const url = API.doctorsGet;
-    const headers = new HttpHeaders({ 
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${localStorage.getItem('token')}` 
-    });
-    return this.http.get(url, { headers }).pipe(catchError(this.errorHandler));
-  }
+  // getDoctors() {
+  //   const url = API.doctorsGet;
+  //   const headers = new HttpHeaders({ 
+  //     'Content-Type': 'application/json',
+  //     'Authorization': `Bearer ${localStorage.getItem('token')}` 
+  //   });
+  //   return this.http.get(url, { headers }).pipe(catchError(this.errorHandler));
+  // }
 
   private errorHandler(error: HttpErrorResponse) {
     return throwError(error.error.message);

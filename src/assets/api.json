@@ -1,6 +1,13 @@
 {
-    "userRegister": "http://localhost:3000/user/register",
-    "userAuthenticate": "http://localhost:3000/user/authenticate",
-    "userGet": "http://localhost:3000/user/get",
-    "doctorsGet": "http://localhost:3000/user/alldoctors"
+    "patientRegister": "http://localhost:4000/api/patient/register",
+    "authenticatePatient": "http://localhost:4000/api/patient/authenticate",
+    "updatePatientCredentials": "http://localhost:4000/api/patient/update/credentials",
+    "updatePatient": "http://localhost:4000/api/patient/update",
+    "getPatientByID": "http://localhost:4000/api/patient/get",
+    "doctorRegister": "http://localhost:4000/api/doctor/register",
+    "authenticateDoctor": "http://localhost:4000/api/doctor/authenticate",
+    "updateDoctorCredentials": "http://localhost:4000/api/doctor/update/credentials",
+    "updateDoctor": "http://localhost:4000/api/doctor/update",
+    "getDoctorByID": "http://localhost:4000/api/doctor/get",
+    "addRating": "http://localhost:4000/api/doctor/update/rating"
 }
