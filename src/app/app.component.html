@@ -1,17 +1,51 @@
 <div>
-    <nav class="navbar navbar-expand p-3">
-        <a class="navbar-brand pl-3 pointer">
-            <img src="../assets/img/logo.png" width="50" height="50" routerLink="/"/>
-        </a>
-        <a class="navbar-brand text-black pointer">
-            <span class="h3" routerLink="/">DocFind</span>
-        </a>
-        <div class="navbar-nav ml-auto">
-            <a [ngClass]="setActive('^\/user$|\/user\/dashboard|\/user\/signup|\/user\/login')" class="nav-item nav-link text-black h5 my-auto mr-3 link pointer" routerLink="/user">My Account</a>
+  <nav class="navbar navbar-expand p-3">
+    <a class="navbar-brand pl-3 pointer">
+      <img src="../assets/img/logo.png" width="50" height="50" routerLink="/"/>
+    </a>
+    <a class="navbar-brand text-black pointer">
+      <span class="h3" routerLink="/">DocFind</span>
+    </a>
+    <div class="navbar-nav ml-auto">
+      <a [ngClass]="setActive('^\/user$|\/user\/patient|\/user\/doctor|\/user\/signup|\/user\/login')" class="nav-item nav-link text-black h5 my-auto mr-3 link pointer" routerLink="/user">My Account</a>
+    </div>
+  </nav>
+  <router-outlet></router-outlet>
+  <footer class="container-fluid footer text-black text-center">
+    <div class="row text-center d-flex justify-content-center mt-2 mb-4 mx-5">
+      <div class="col-md-2">
+        <h6 class="font-weight-bold"><a routerLink="/user" class="text-black">My Account</a></h6>
+      </div>
+      <div class="col-md-2">
+        <h6 class="font-weight-bold"><a routerLink="/user/login" class="text-black">Login</a></h6>
+      </div>
+      <div class="col-md-2">
+        <h6 class="font-weight-bold"><a routerLink="/user/signup" class="text-black">Sign Up</a></h6>
+      </div>
+      <div class="col-md-2">
+        <h6 class="font-weight-bold"><a routerLink="/about" class="text-black">About</a></h6>
+      </div>
+      <div class="col-md-2">
+        <h6 class="font-weight-bold"><a routerLink="/policy" class="text-black">Privay Policy</a></h6>
+      </div>
+    </div>
+    <hr style="border: 0.1px solid #000000; width: 70%;">
+    <div class="row d-flex text-center justify-content-center mb-md-0 mb-4">
+      <div class="col-md-8 col-12 mt-3">
+        <p class="h6">DocFind is a simple application made for FSWD Course. The applications main purpose is to be a catalogue of doctors for users, so that they can quickly find information on them and be able to contact them and get an appointment.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 mt-4">
+        <div class="mb-5 flex-center">
+          <a target="_blank" title="Facebook" href="https://www.facebook.com/hassaan.younas.79/"><i class="fa fa-facebook-f fa-lg text-black mr-4 pointer"></i></a>
+          <a target="_blank" title="Twitter" href="https://www.twitter.com"><i class="fa fa-twitter fa-lg text-black mr-4 pointer"></i></a>
+          <a target="_blank" title="LinkedIn" href="https://pk.linkedin.com/in/hassaan-younas-04494b169"><i class="fa fa-linkedin fa-lg text-black mr-4 pointer"></i></a>
+          <a target="_blank" title="Instagram" href="https://www.instagram.com/ha.ss.aa.n/"><i class="fa fa-instagram fa-lg text-black mr-4 pointer"></i></a>
+          <a target="_blank" title="GitHub" href="https://github.com/HassaanYounas"><i class="fa fa-github fa-lg text-black pointer"></i></a>
         </div>
-    </nav>
-    <router-outlet></router-outlet>
-    <footer class="container-fluid footer text-black text-center">
-        <p class="h5 mt-3">Made with &hearts; by Rais, Jazab and Hassaan | All Rights Reserved &copy; 2020</p>
-    </footer>
+      </div>
+    </div>   
+    <p class="h6">Made with &hearts; by Rais, Jazab and Hassaan | All Rights Reserved &copy; 2020</p>
+  </footer>
 </div>
