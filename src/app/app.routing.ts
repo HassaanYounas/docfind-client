@@ -7,6 +7,8 @@ import { AuthGuardService } from './services/auth-guard.service';
 import { HomeGuardService } from './services/home-guard.service';
 import { DoctorDashboardComponent } from './components/user/doctor-dashboard/doctor-dashboard.component';
 import { PatientDashboardComponent } from './components/user/patient-dashboard/patient-dashboard.component';
+import { AboutComponent } from './components/about/about.component';
+import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
 
 const routes: Routes = [
     { path: '', component: HomeComponent, canActivate: [HomeGuardService] },
@@ -15,6 +17,8 @@ const routes: Routes = [
     { path: 'user/login', component: UserLoginComponent, canActivate: [HomeGuardService] },
     { path: 'user/doctor', component: DoctorDashboardComponent, canActivate: [AuthGuardService] },
     { path: 'user/patient', component: PatientDashboardComponent, canActivate: [AuthGuardService] },
+    { path: 'about', component: AboutComponent },
+    { path: 'policy', component: PrivacyPolicyComponent },
     { path: '**', redirectTo: '/' }
 ];
 

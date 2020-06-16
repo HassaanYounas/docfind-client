@@ -10,6 +10,8 @@ import { UserLoginComponent } from './components/user/user-login/user-login.comp
 import { AppRoutingModule } from './app.routing';
 import { DoctorDashboardComponent } from './components/user/doctor-dashboard/doctor-dashboard.component';
 import { PatientDashboardComponent } from './components/user/patient-dashboard/patient-dashboard.component';
+import { AboutComponent } from './components/about/about.component';
+import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,8 @@ import { PatientDashboardComponent } from './components/user/patient-dashboard/p
     UserLoginComponent,
     DoctorDashboardComponent,
     PatientDashboardComponent,
+    AboutComponent,
+    PrivacyPolicyComponent,
   ],
   imports: [
     BrowserModule,
