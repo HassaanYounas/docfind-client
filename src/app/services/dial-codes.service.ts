@@ -8,7 +8,7 @@ export class DialCodesService {
 
   private dialCodes: any[] = (codes as any).default;
 
-  constructor() { }
+  constructor() {}
 
   getDialCodes(): any {
     return this.dialCodes

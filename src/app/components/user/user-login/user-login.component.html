@@ -5,8 +5,18 @@
             <input id="email" required formControlName="email" type="email" class="form-control form-control-custom mt-2" placeholder="Email">
             <h6 [ngClass]="{'d-none': validEmail}" class="font-weight-bold text-danger mt-2">Invalid email</h6>
             <input id="password" required formControlName="password" type="password" class="form-control form-control-custom mt-2" placeholder="Password">
-            <h6 [ngClass]="{'d-none': validEmailPassword}" class="font-weight-bold text-danger mt-2" [innerHTML]="authError"></h6> 
-            <button type="submit" class="btn mt-4">Login</button>
+            <div class="mx-auto mt-2 input-group">
+                <div class="input-group-prepend mx-auto">
+                    <button id="accountTypeBtn" class="btn-dropdown px-4 py-2 dropdown-toggle" type="button" data-toggle="dropdown" [innerHTML]="accountType"></button>
+                    <div class="dropdown-menu my-2 mx-auto dropdown-menu-custom">
+                        <li class="font-weight-bold dropdown-item dropdown-item-custom pointer" (click)="setAccountType('Patient')">Patient</li>
+                        <li class="font-weight-bold dropdown-item dropdown-item-custom pointer" (click)="setAccountType('Doctor')">Doctor</li>
+                    </div>
+                </div>
+            </div>
+            <h6 [ngClass]="{'d-none': validAccountType}" class="font-weight-bold text-danger mt-2">Please select an account type</h6>
+            <h6 [ngClass]="{'d-none': noError}" class="font-weight-bold text-danger mt-2" [innerHTML]="apiError"></h6>
+            <button type="submit" class="btn mt-3">Login</button>
         </form>
         <p class="text-black h5">
             or <a class="h5 link" routerLink="/user/signup">Sign Up</a>

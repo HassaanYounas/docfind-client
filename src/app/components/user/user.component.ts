@@ -7,12 +7,7 @@ import { Router } from '@angular/router';
 })
 export class UserComponent implements OnInit {
 
-  constructor(private router: Router) {
-    if (localStorage.getItem('token')) {
-      this.router.navigate(['/user/dashboard']);
-    }
-  }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 }

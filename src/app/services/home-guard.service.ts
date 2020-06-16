@@ -6,13 +6,15 @@ import { CanActivate, Router } from '@angular/router';
 })
 export class HomeGuardService implements CanActivate {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {}
 
   canActivate(): boolean {
-    if (localStorage.getItem('token')) {
-      this.router.navigate(['/user/dashboard']);
+    if (localStorage.getItem('type') === 'Patient') {
+      this.router.navigate(['/user/patient']);
       return false;
-    }
-    return true;
+    } else if (localStorage.getItem('type') === 'Doctor') {
+      this.router.navigate(['/user/doctor']);
+      return false;
+    } return true;
   }
 }

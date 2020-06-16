@@ -5,9 +5,9 @@ import { Injectable } from '@angular/core';
 })
 export class InputValidationService {
 
-  constructor() { }
+  constructor() {}
 
-  isString(str: string): boolean {
+  isAlphabetsOnly(str: string): boolean {
     const regex = /^[A-Za-z\s]+$/;
     return str.match(regex) ? true : false;
   }

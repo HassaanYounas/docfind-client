@@ -3,12 +3,13 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './components/home';
-import { UserComponent } from './components/user';
-import { UserSignupComponent } from './components/user/user-signup';
-import { UserLoginComponent } from './components/user/user-login';
-import { UserDashboardComponent } from './components/user/user-dashboard';
+import { HomeComponent } from './components/home/home.component';
+import { UserComponent } from './components/user/user.component';
+import { UserSignupComponent } from './components/user/user-signup/user-signup.component';
+import { UserLoginComponent } from './components/user/user-login/user-login.component';
 import { AppRoutingModule } from './app.routing';
+import { DoctorDashboardComponent } from './components/user/doctor-dashboard/doctor-dashboard.component';
+import { PatientDashboardComponent } from './components/user/patient-dashboard/patient-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { AppRoutingModule } from './app.routing';
     UserComponent,
     UserSignupComponent,
     UserLoginComponent,
-    UserDashboardComponent
+    DoctorDashboardComponent,
+    PatientDashboardComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,4 +31,4 @@ import { AppRoutingModule } from './app.routing';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
