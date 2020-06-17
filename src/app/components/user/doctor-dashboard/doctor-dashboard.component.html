@@ -1,1 +1,65 @@
-<p>doctor-dashboard works!</p>
+<div>
+    <div class="section-topbar">
+        <div class="container d-flex justify-content-between align-items-center pt-3 pb-2">
+            <h3>Mohsin Ali | Doctor</h3>
+            <a class="pointer h5">Log Out</a>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col text-center section-form-left mr-5 mt-5 py-5">
+              <p class="h5 mb-1">Update Your Information</p>
+              <p class="h6 mb-3">So that patients can view your profile 😀</p>
+              <form class="mx-5" [formGroup]="informationForm" (ngSubmit)="onInfoSubmit(informationForm.value)">
+                    <input id="fullName" required formControlName="fullName" type="text" class="form-control form-control-custom" placeholder="Full Name">
+                    <h6 [ngClass]="{'d-none': validFullName}" class="font-weight-bold text-danger mt-2">Invalid name</h6>
+                    <input id="qualification" required formControlName="qualification" type="qualification" class="form-control form-control-custom mt-2" placeholder="Qualification (MBBS)">
+                    <h6 [ngClass]="{'d-none': validQualification}" class="font-weight-bold text-danger mt-2">Please enter your qualification</h6>
+                    <input id="address" required formControlName="address" type="address" class="form-control form-control-custom mt-2" placeholder="Complete Address">
+                    <h6 [ngClass]="{'d-none': validAddress}" class="font-weight-bold text-danger mt-2">Please enter your address</h6>
+                    <div class="mt-2 input-group">
+                        <input id="workingDays" formControlName="workingDays" required type="text" class="form-control form-control-custom mr-1" placeholder="Days (Mon-Fri)"> 
+                        <input id="workingHours" formControlName="workingHours" required type="text" class="form-control form-control-custom ml-1" placeholder="Hours (5-9)">
+                    </div>
+                    <h6 [ngClass]="{'d-none': validWorkingDays}" class="font-weight-bold text-danger mt-2">Please enter working days</h6>
+                    <h6 [ngClass]="{'d-none': validWorkingHours}" class="font-weight-bold text-danger mt-2">Please enter working hours</h6>
+                    <textarea id="description" formControlName="description" rows="2" class="form-control form-control-custom mt-2" placeholder="A small description about yourself 👨‍⚕️"></textarea>
+                    <h6 [ngClass]="{'d-none': validDescription}" class="font-weight-bold text-danger mt-2">Please provide a small description</h6>
+                    <div class="mt-2 input-group">
+                        <div class="input-group-prepend">
+                            <button id="dialCodeBtn" class="btn-dropdown mr-2 dropdown-toggle" type="button" data-toggle="dropdown" [innerHTML]="countryCode"></button>
+                            <div class="dropdown-menu my-2 dropdown-menu-custom">
+                                <li class="font-weight-bold dropdown-item dropdown-item-custom pointer" (click)="setCountryCode(code.code)" *ngFor="let code of dialCodes">{{ code.country }} (+{{ code.code }})</li>
+                            </div>
+                        </div>
+                        <input id="cellularNumber" formControlName="cellularNumber" required type="text" class="form-control form-control-custom mr-1" placeholder="Contact"> 
+                        <input id="fee" formControlName="fee" required type="number" class="form-control form-control-custom ml-1" placeholder="Fee"> 
+                    </div>
+                    <h6 [ngClass]="{'d-none': validCellular}" class="font-weight-bold text-danger mt-2">Invalid contact (did you select country code?)</h6>
+                    <h6 [ngClass]="{'d-none': validFee}" class="font-weight-bold text-danger mt-2">Please enter fee amount</h6>
+                    <button type="submit" class="btn mt-3">Update Info</button>
+                </form>
+                <h5 [ngClass]="{'d-none': !successMessageLeft}" class="font-weight-bold mt-3">Information Updated Successfully</h5>
+                <h6 [ngClass]="{'d-none': noErrorLeft}" class="font-weight-bold text-danger mt-3" [innerHTML]="apiErrorLeft"></h6>
+            </div>
+            <div class="col text-center section-form-right ml-5 mt-5 py-5">
+                <p class="h5 mb-1">Update Your Login Credentials</p>
+                <p class="h6 mb-3">If you feel the need to do so 🤷‍♂️</p>
+                <form class="mx-5" [formGroup]="credentialsForm" (ngSubmit)="onCredentialsSubmit(credentialsForm.value)">
+                    <input id="email" required formControlName="email" type="email" class="form-control form-control-custom mt-2" placeholder="Email">
+                    <h6 [ngClass]="{'d-none': validEmail}" class="font-weight-bold text-danger mt-2">Invalid email</h6>
+                    <input id="password" required formControlName="password" type="password" class="form-control form-control-custom mt-2" placeholder="Password">
+                    <h6 [ngClass]="{'d-none': validPassword}" class="font-weight-bold text-danger mt-2">Password should be at least 8 characters long</h6> 
+                    <input id="confirmPassword" required formControlName="confirmPassword" type="password" class="form-control form-control-custom mt-2" placeholder="Confirm Password">
+                    <h6 [ngClass]="{'d-none': validPasswordConfirm}" class="font-weight-bold text-danger mt-2">Passwords do not match</h6>
+                    <button type="submit" class="btn mt-3">Update Credentials</button>
+                </form>
+                <h5 [ngClass]="{'d-none': !successMessageRight}" class="font-weight-bold mt-3">Credentials Updated Successfully</h5>
+                <h6 [ngClass]="{'d-none': noErrorRight}" class="font-weight-bold text-danger mt-3" [innerHTML]="apiErrorRight"></h6>
+            </div>
+        </div>
+    </div>
+    <svg class="mb-5 pb-5" viewBox="0 0 1440 220">
+        <path fill="#e98074" d="M0,256L0,192L80,192L80,160L160,160L160,256L240,256L240,32L320,32L320,160L400,160L400,64L480,64L480,64L560,64L560,96L640,96L640,128L720,128L720,64L800,64L800,192L880,192L880,128L960,128L960,64L1040,64L1040,96L1120,96L1120,224L1200,224L1200,32L1280,32L1280,320L1360,320L1360,256L1440,256L1440,0L1360,0L1360,0L1280,0L1280,0L1200,0L1200,0L1120,0L1120,0L1040,0L1040,0L960,0L960,0L880,0L880,0L800,0L800,0L720,0L720,0L640,0L640,0L560,0L560,0L480,0L480,0L400,0L400,0L320,0L320,0L240,0L240,0L160,0L160,0L80,0L80,0L0,0L0,0Z"></path>
+    </svg>  
+</div>

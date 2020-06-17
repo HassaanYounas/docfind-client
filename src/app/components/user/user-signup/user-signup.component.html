@@ -10,16 +10,6 @@
             <h6 [ngClass]="{'d-none': validPassword}" class="font-weight-bold text-danger mt-2">Password should be at least 8 characters long</h6> 
             <input id="confirmPassword" required formControlName="confirmPassword" type="password" class="form-control form-control-custom mt-2" placeholder="Confirm Password">
             <h6 [ngClass]="{'d-none': validPasswordConfirm}" class="font-weight-bold text-danger mt-2">Passwords do not match</h6>
-            <!-- <div class="mt-2 input-group">
-                <div class="input-group-prepend">
-                    <button id="dialCodeBtn" class="btn-dropdown mr-2 dropdown-toggle" type="button" data-toggle="dropdown" [innerHTML]="countryCode"></button>
-                    <div class="dropdown-menu my-2 dropdown-menu-custom">
-                        <li class="font-weight-bold dropdown-item dropdown-item-custom pointer" (click)="setCountryCode(code.code)" *ngFor="let code of dialCodes">{{ code.country }} (+{{ code.code }})</li>
-                    </div>
-                </div>
-                <input id="cellularNumber" formControlName="cellularNumber" required type="text" class="form-control form-control-custom" placeholder="Cellular Number"> 
-            </div>
-            <h6 [ngClass]="{'d-none': validCellular}" class="font-weight-bold text-danger mt-2">Invalid contact (did you select country code?)</h6> -->
             <div class="mx-auto mt-2 input-group">
                 <div class="input-group-prepend mx-auto">
                     <button id="accountTypeBtn" class="btn-dropdown px-4 py-2 dropdown-toggle" type="button" data-toggle="dropdown" [innerHTML]="accountType"></button>

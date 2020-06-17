@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -6,11 +6,9 @@ import { Router } from '@angular/router';
   templateUrl: './patient-dashboard.component.html',
   styleUrls: ['./patient-dashboard.component.sass']
 })
-export class PatientDashboardComponent implements OnInit {
+export class PatientDashboardComponent {
 
   constructor(private router: Router) {
     if (localStorage.getItem('type') === 'Doctor') this.router.navigate(['/user/doctor']);
   }
-
-  ngOnInit(): void {}
 }
