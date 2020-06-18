@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router, NavigationEnd  } from '@angular/router';
 import { filter } from 'rxjs/operators';  
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',

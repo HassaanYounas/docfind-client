@@ -1,8 +1,8 @@
 <div>
     <div class="section-topbar">
         <div class="container d-flex justify-content-between align-items-center pt-3 pb-2">
-            <h3>Mohsin Ali | Doctor</h3>
-            <a class="pointer h5">Log Out</a>
+            <h3 [innerHTML]="doctorName"></h3>
+            <a class="pointer h5" (click)="logOut()">Log Out</a>
         </div>
     </div>
     <div class="container">
@@ -10,7 +10,7 @@
             <div class="col text-center section-form-left mr-5 mt-5 py-5">
               <p class="h5 mb-1">Update Your Information</p>
               <p class="h6 mb-3">So that patients can view your profile 😀</p>
-              <form class="mx-5" [formGroup]="informationForm" (ngSubmit)="onInfoSubmit(informationForm.value)">
+              <form *ngIf="this.informationForm" class="mx-5" [formGroup]="informationForm" (ngSubmit)="onInfoSubmit(informationForm.value)">
                     <input id="fullName" required formControlName="fullName" type="text" class="form-control form-control-custom" placeholder="Full Name">
                     <h6 [ngClass]="{'d-none': validFullName}" class="font-weight-bold text-danger mt-2">Invalid name</h6>
                     <input id="qualification" required formControlName="qualification" type="qualification" class="form-control form-control-custom mt-2" placeholder="Qualification (MBBS)">
@@ -23,7 +23,7 @@
                     </div>
                     <h6 [ngClass]="{'d-none': validWorkingDays}" class="font-weight-bold text-danger mt-2">Please enter working days</h6>
                     <h6 [ngClass]="{'d-none': validWorkingHours}" class="font-weight-bold text-danger mt-2">Please enter working hours</h6>
-                    <textarea id="description" formControlName="description" rows="2" class="form-control form-control-custom mt-2" placeholder="A small description about yourself 👨‍⚕️"></textarea>
+                    <textarea id="description" formControlName="description" rows="3" class="form-control form-control-custom mt-2" placeholder="A small description about yourself 👨‍⚕️"></textarea>
                     <h6 [ngClass]="{'d-none': validDescription}" class="font-weight-bold text-danger mt-2">Please provide a small description</h6>
                     <div class="mt-2 input-group">
                         <div class="input-group-prepend">
@@ -37,7 +37,7 @@
                     </div>
                     <h6 [ngClass]="{'d-none': validCellular}" class="font-weight-bold text-danger mt-2">Invalid contact (did you select country code?)</h6>
                     <h6 [ngClass]="{'d-none': validFee}" class="font-weight-bold text-danger mt-2">Please enter fee amount</h6>
-                    <button type="submit" class="btn mt-3">Update Info</button>
+                    <button type="submit" class="btn mt-3">Update</button>
                 </form>
                 <h5 [ngClass]="{'d-none': !successMessageLeft}" class="font-weight-bold mt-3">Information Updated Successfully</h5>
                 <h6 [ngClass]="{'d-none': noErrorLeft}" class="font-weight-bold text-danger mt-3" [innerHTML]="apiErrorLeft"></h6>
@@ -45,14 +45,19 @@
             <div class="col text-center section-form-right ml-5 mt-5 py-5">
                 <p class="h5 mb-1">Update Your Login Credentials</p>
                 <p class="h6 mb-3">If you feel the need to do so 🤷‍♂️</p>
-                <form class="mx-5" [formGroup]="credentialsForm" (ngSubmit)="onCredentialsSubmit(credentialsForm.value)">
+                <form *ngIf="this.credentialsForm" class="mx-5" [formGroup]="credentialsForm" (ngSubmit)="onCredentialsSubmit(credentialsForm.value)">
                     <input id="email" required formControlName="email" type="email" class="form-control form-control-custom mt-2" placeholder="Email">
                     <h6 [ngClass]="{'d-none': validEmail}" class="font-weight-bold text-danger mt-2">Invalid email</h6>
-                    <input id="password" required formControlName="password" type="password" class="form-control form-control-custom mt-2" placeholder="Password">
-                    <h6 [ngClass]="{'d-none': validPassword}" class="font-weight-bold text-danger mt-2">Password should be at least 8 characters long</h6> 
-                    <input id="confirmPassword" required formControlName="confirmPassword" type="password" class="form-control form-control-custom mt-2" placeholder="Confirm Password">
-                    <h6 [ngClass]="{'d-none': validPasswordConfirm}" class="font-weight-bold text-danger mt-2">Passwords do not match</h6>
-                    <button type="submit" class="btn mt-3">Update Credentials</button>
+                    <input id="password" required formControlName="password" type="password" class="form-control form-control-custom mt-2" placeholder="Current Password">
+                    <h6 [ngClass]="{'d-none': validPassword}" class="font-weight-bold text-danger mt-2">Please enter your password</h6>
+                    <p class="h5 mt-4 mb-2">Enter Your New Login Credentials</p>
+                    <input id="newEmail" required formControlName="newEmail" type="email" class="form-control form-control-custom mt-2" placeholder="New Email">
+                    <h6 [ngClass]="{'d-none': validNewEmail}" class="font-weight-bold text-danger mt-2">Invalid email</h6>
+                    <input id="newPassword" required formControlName="newPassword" type="password" class="form-control form-control-custom mt-2" placeholder="New Password">
+                    <h6 [ngClass]="{'d-none': validNewPassword}" class="font-weight-bold text-danger mt-2">Password should be at least 8 characters long</h6> 
+                    <input id="newConfirmPassword" required formControlName="newConfirmPassword" type="password" class="form-control form-control-custom mt-2" placeholder="Confirm New Password">
+                    <h6 [ngClass]="{'d-none': validNewPasswordConfirm}" class="font-weight-bold text-danger mt-2">Passwords do not match</h6>
+                    <button type="submit" class="btn mt-3">Update</button>
                 </form>
                 <h5 [ngClass]="{'d-none': !successMessageRight}" class="font-weight-bold mt-3">Credentials Updated Successfully</h5>
                 <h6 [ngClass]="{'d-none': noErrorRight}" class="font-weight-bold text-danger mt-3" [innerHTML]="apiErrorRight"></h6>

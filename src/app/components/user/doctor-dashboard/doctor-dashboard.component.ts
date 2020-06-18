@@ -4,6 +4,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { DialCodesService } from 'src/app/services/dial-codes.service';
 import { InputValidationService } from 'src/app/services/input-validation.service';
 import { Doctor } from 'src/app/models/doctor.model';
+import { APIService } from 'src/app/services/api.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-doctor-dashboard',
@@ -23,48 +25,107 @@ export class DoctorDashboardComponent {
 
   validEmail: boolean = true;
   validPassword: boolean = true;
-  validPasswordConfirm: boolean = true;
+  validNewEmail: boolean = true;
+  validNewPassword: boolean = true;
+  validNewPasswordConfirm: boolean = true;
 
   successMessageRight: boolean = false;
   successMessageLeft: boolean = false;
   noErrorRight: boolean = true;
   noErrorLeft: boolean = true;
 
+  doctorName: string = '';
   countryCode: string = '';
   apiErrorRight: string = '';
   apiErrorLeft: string = '';
 
-  informationForm: FormGroup;
-  credentialsForm: FormGroup;
+  informationForm: any;
+  credentialsForm: any;
   dialCodes: any;
 
   doctor: Doctor;
 
   constructor(
+    private titleService: Title,
     private router: Router,
     private formBuilder: FormBuilder,
     private dialCodeService: DialCodesService,
-    private inputValidation: InputValidationService
+    private inputValidation: InputValidationService,
+    private api: APIService
   ) {
     if (localStorage.getItem('type') === 'Patient') this.router.navigate(['/user/patient']);
-    this.informationForm = this.formBuilder.group({
-      fullName: '', qualification: '', address: '', workingDays: '', 
-      workingHours: '', description: '', fee: '', cellularNumber: ''
-    });
-    this.credentialsForm = this.formBuilder.group({
-      email: '', password: '', confirmPassword: ''
-    }); 
-    this.dialCodes = this.dialCodeService.getDialCodes();
-    this.countryCode = '+92';
-    this.doctor = new Doctor();
+    else {
+      this.api.getDoctor(localStorage.getItem('id')).subscribe(
+        (res: any) => {
+          if (res.token !== '') {
+            this.informationForm = this.formBuilder.group({
+              fullName: '', qualification: '', address: '', workingDays: '', 
+              workingHours: '', description: '', fee: '', cellularNumber: ''
+            });
+            this.credentialsForm = this.formBuilder.group({
+              email: '', password: '', newEmail: '', newPassword: '', newConfirmPassword: ''
+            });
+            this.setupDashboard(res);
+          }
+        }
+      );
+    }
   }
 
   setCountryCode(code: string) {
     this.countryCode = '+' + code;
   }
 
+  setupDashboard(res: any): void {
+    this.doctor = new Doctor();
+    this.doctor.setValues(
+      res.fullName,
+      res.email,
+      res.password,
+      res.cellularNumber,
+      res.qualification,
+      res.workingDays,
+      res.workingHours,
+      res.address,
+      res.fee,
+      res.description,
+      res.ratings
+    );
+    this.doctorName = this.doctor.fullName + ' | Doctor';
+    this.setInformationFormValues();
+    this.setCredentialsFormValues();
+    this.dialCodes = this.dialCodeService.getDialCodes();
+    this.countryCode = 'Code';
+    this.titleService.setTitle(this.doctor.fullName + ' | Doctor');
+  }
+
+  setInformationFormValues(): void {
+    this.informationForm.controls['fullName'].setValue(this.doctor.fullName);
+    this.informationForm.controls['qualification'].setValue(this.doctor.qualification);
+    this.informationForm.controls['address'].setValue(this.doctor.address);
+    this.informationForm.controls['workingDays'].setValue(this.doctor.workingDays);
+    this.informationForm.controls['workingHours'].setValue(this.doctor.workingHours);
+    this.informationForm.controls['description'].setValue(this.doctor.description);
+    this.informationForm.controls['cellularNumber'].setValue(this.doctor.cellularNumber);
+  }
+
+  setCredentialsFormValues(): void {
+    this.credentialsForm.controls['email'].setValue(this.doctor.email);
+    this.credentialsForm.controls['password'].setValue('');
+    this.credentialsForm.controls['newEmail'].setValue('');
+    this.credentialsForm.controls['newPassword'].setValue('');
+    this.credentialsForm.controls['newConfirmPassword'].setValue('');
+  }
+
+  logOut(): void {
+    localStorage.removeItem('token');
+    localStorage.removeItem('id');
+    localStorage.removeItem('type');
+    this.titleService.setTitle('DocFind');
+    this.router.navigate(['/']);
+  }
+
   onInfoSubmit(formData: any): void {
-    //this.informationForm.controls['fullName'].setValue('Name');
     if (this.isValidInput(formData)) {
       this.successMessageLeft = true;
       setTimeout(() => this.successMessageLeft = false, 3000);
@@ -73,10 +134,21 @@ export class DoctorDashboardComponent {
 
   onCredentialsSubmit(formData: any): void {
     this.validEmail = !this.inputValidation.isEmail(formData.email) ? false : true;
-    this.validPassword = (formData.password.length >= 8);
-    this.validPasswordConfirm = formData.password === formData.confirmPassword;
-    if (this.validEmail && this.validPassword && this.validPasswordConfirm) {
-      this.successMessageRight = true;
+    this.validPassword = !(formData.password === '');
+    this.validNewEmail = !this.inputValidation.isEmail(formData.newEmail) ? false : true;
+    this.validNewPassword = (formData.newPassword.length >= 8);
+    this.validNewPasswordConfirm = formData.newPassword === formData.newConfirmPassword;
+    if (this.validEmail && this.validPassword && this.validNewEmail && this.validNewPassword && this.validNewPasswordConfirm) {
+      this.api.updateDoctorCredentials(formData, localStorage.getItem('id')).subscribe(
+        (res: any) => {
+          this.noErrorRight = true;
+          if (res.token !== '') {
+            localStorage.setItem('token', res.token);
+            this.setupDashboard(res);
+            this.successMessageRight = true;
+          }
+        }, (error: any) => { this.noErrorRight = false; this.apiErrorRight = error; }
+      );
       setTimeout(() => this.successMessageRight = false, 3000);
     }
   }

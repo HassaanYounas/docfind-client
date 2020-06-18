@@ -28,6 +28,24 @@ export class APIService {
     return this.http.post(url, body, { headers }).pipe(catchError(this.errorHandler));
   }
 
+  updatePatientCredentials() {
+
+  }
+
+  updatePatient() {
+
+  }
+
+  getPatient(id: string) {
+    const url = API.getPatientByID;
+    const body = { 'id': id };
+    const headers = new HttpHeaders({ 
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${localStorage.getItem('token')}` 
+    });
+    return this.http.post(url, body, { headers }).pipe(catchError(this.errorHandler));
+  }
+
   doctorRegister(doctor: Doctor) {
     const doctorJSON = JSON.stringify(doctor);
     const url = API.doctorRegister;
@@ -43,17 +61,55 @@ export class APIService {
     return this.http.post(url, body, { headers }).pipe(catchError(this.errorHandler));
   }
 
-  // getPatient() {
-  //   const url = API.getPatientByID;
-  //   const body = {
-  //     '_id': localStorage.getItem('_id')
-  //   }
-  //   const headers = new HttpHeaders({ 
-  //     'Content-Type': 'application/json',
-  //     'Authorization': `Bearer ${localStorage.getItem('token')}` 
-  //   });
-  //   return this.http.post(url, body, { headers }).pipe(catchError(this.errorHandler));
-  // }
+  updateDoctorCredentials(params: any, doctorId: string) {
+    const url = API.updateDoctorCredentials;
+    const body = {
+      id: doctorId,
+      email: params.email,
+      password: params.password,
+      newEmail: params.newEmail,
+      newPassword: params.newPassword
+    }
+    const headers = new HttpHeaders({ 
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
+    });
+    return this.http.post(url, body, { headers }).pipe(catchError(this.errorHandler));
+  }
+  
+  updateDoctor(params: any, doctorId: string) {
+    const url = API.updateDoctor;
+    const body = {
+      id: doctorId,
+      fullName: params.fullName,
+      cellularNumber: params.cellularNumber,
+      qualification: params.qualification,
+      workingDays: params.workingDays,
+      workingHours: params.workingHours,
+      address: params.address,
+      description: params.description,
+      fee: params.fee
+    }
+    const headers = new HttpHeaders({ 
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
+    });
+    return this.http.post(url, body, { headers }).pipe(catchError(this.errorHandler));
+  }
+
+  getDoctor(id: string) {
+    const url = API.getDoctorByID;
+    const body = { 'id': id }
+    const headers = new HttpHeaders({ 
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
+    });
+    return this.http.post(url, body, { headers }).pipe(catchError(this.errorHandler));
+  }
+
+  addRating() {
+
+  }
 
   private errorHandler(error: HttpErrorResponse) {
     return throwError(error.error.message);
