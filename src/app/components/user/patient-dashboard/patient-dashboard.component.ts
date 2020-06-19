@@ -42,10 +42,11 @@ export class PatientDashboardComponent {
   }
 
   setDoctors(res: any) {
+    console.log(res);
     res.forEach(e => {
       let doctor = new Doctor();
       doctor.setValues(
-        e.fullName, e.email, '', e.cellularNumber,
+        e.id, e.fullName, e.email, '', e.cellularNumber,
         e.qualification, e.workingDays, e.workingHours, 
         e.address, e.fee, e.description, e.ratings
       );
@@ -77,7 +78,7 @@ export class PatientDashboardComponent {
   }
 
   setupDashboard(res: any): void {
-    this.patient.setValues(res.fullName, res.email, '');
+    this.patient.setValues(res.id, res.fullName, res.email, '');
     this.patientName = this.patient.fullName + ' | Patient';
   }
 }

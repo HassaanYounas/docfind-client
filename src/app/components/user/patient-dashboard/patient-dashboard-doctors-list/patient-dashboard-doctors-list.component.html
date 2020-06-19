@@ -1,17 +1,41 @@
 <div class="section-doctors-list mt-5 p-5">
     <p class="h5 mb-3 text-center">List of all Doctors on DocFind</p>
     <ul class="list-group px-5">
-        <a data-toggle="collapse" *ngFor="let doctor of doctors; let i = index" [href]="'#doctor' + i" class="list-item mb-3 mx-5 no-underline" title="Click to Expand">
-            🧠 {{ doctor.fullName }} | {{ doctor.qualification }} | {{ doctor.description }} | {{ doctor.avgRating }} ⭐
+        <li *ngFor="let doctor of doctors; let i = index" class="list-item mb-3 mx-5">
+            <div class="d-flex justify-content-between mb-n3">
+                <p>🧠 {{ doctor.fullName }} | {{ doctor.qualification }} | {{ doctor.description }} | {{ doctor.avgRating }} ⭐</p>
+                <a class="no-underline" data-toggle="collapse" [href]="'#doctor' + i">
+                    <svg class="expandIcon" [id]="'expandIcon' + i" (click)="flipIcon(i)" width="15px" height="15px" viewBox="0 0 451.847 451.847">
+                        <path d="M225.923,354.706c-8.098,0-16.195-3.092-22.369-9.263L9.27,151.157c-12.359-12.359-12.359-32.397,0-44.751 c12.354-12.354,32.388-12.354,44.748,0l171.905,171.915l171.906-171.909c12.359-12.354,32.391-12.354,44.744,0 c12.365,12.354,12.365,32.392,0,44.751L248.292,345.449C242.115,351.621,234.018,354.706,225.923,354.706z"/>       
+                    </svg>
+                </a>
+            </div>
             <div class="collapse" [id]="'doctor' + i">
-                <div class="card card-body mt-2 card-body-custom py-2 px-3">
+                <div class="card card-body card-body-custom py-2 px-3 mt-3">
                     <p class="m-0">Email: {{ doctor.email }}</p>
                     <p class="m-0">Cellular Number: +{{ doctor.cellularNumber }}</p>
                     <p class="m-0">Address: {{ doctor.address }}</p>
                     <p class="m-0">Working Days: {{ doctor.workingDays }} | Working Hours: {{ doctor.workingHours }}</p>
                     <p class="m-0">Fee: {{ doctor.fee }}</p>
+                    <div class="row d-flex align-items-center">
+                        <div class="col">
+                            <p class="m-0">Your Rating:</p>
+                        </div>
+                        <div class="col rate">
+                            <input type="radio" [id]="'star5-' + i" name="rate" value="5"/>
+                            <label [for]="'star5-' + i">5 stars</label>
+                            <input type="radio" [id]="'star4-' + i" name="rate" value="4"/>
+                            <label [for]="'star4-' + i">4 stars</label>
+                            <input type="radio" [id]="'star3-' + i" name="rate" value="3"/>
+                            <label [for]="'star3-' + i">3 stars</label>
+                            <input type="radio" [id]="'star2-' + i" name="rate" value="2"/>
+                            <label [for]="'star2-' + i">2 stars</label>
+                            <input type="radio" [id]="'star1-' + i" name="rate" value="1"/>
+                            <label [for]="'star1-' + i">1 star</label>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </a>
+        </li>
     </ul>
 </div>

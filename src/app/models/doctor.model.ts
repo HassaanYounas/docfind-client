@@ -1,4 +1,5 @@
 export class Doctor {
+    id: string;
     fullName: string;
     email: string;
     password: string;
@@ -10,10 +11,10 @@ export class Doctor {
     fee: number;
     description: string;
     ratings: string[];
-    avgRating: number
+    avgRating: number;
 
     constructor() {
-        this.fullName = this.email = this.password = '';
+        this.id = this.fullName = this.email = this.password = '';
         this.cellularNumber = this.qualification = this.workingDays = '';
         this.workingHours = this.address = this.description = '';
         this.fee = this.avgRating = 0;
@@ -21,6 +22,7 @@ export class Doctor {
     }
 
     public setValues(
+        id: string,
         fullName: string,
         email: string,
         password: string,
@@ -33,6 +35,7 @@ export class Doctor {
         description: string,
         ratings: string[]
     ) {
+        this.id = id;
         this.fullName = fullName;
         this.email = email;
         this.password = password;

@@ -79,6 +79,7 @@ export class DoctorDashboardComponent {
 
   setupDashboard(res: any): void {
     this.doctor.setValues(
+      res._id,
       res.fullName,
       res.email,
       '',
