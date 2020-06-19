@@ -55,6 +55,7 @@ export class DoctorDashboardComponent {
   ) {
     if (localStorage.getItem('type') === 'Patient') this.router.navigate(['/user/patient']);
     else {
+      this.doctor = new Doctor();
       this.api.getDoctor(localStorage.getItem('id')).subscribe(
         (res: any) => {
           if (res.token !== '') {
@@ -73,11 +74,10 @@ export class DoctorDashboardComponent {
   }
 
   setCountryCode(code: string) {
-    this.countryCode = '+' + code;
+    this.countryCode = code;
   }
 
   setupDashboard(res: any): void {
-    this.doctor = new Doctor();
     this.doctor.setValues(
       res.fullName,
       res.email,
@@ -95,7 +95,8 @@ export class DoctorDashboardComponent {
     this.setInformationFormValues();
     this.setCredentialsFormValues();
     this.dialCodes = this.dialCodeService.getDialCodes();
-    this.countryCode = 'Code';
+    if (this.doctor.cellularNumber === '') this.countryCode = 'Code';
+    else this.countryCode = this.doctor.cellularNumber.substring(0, 2);
     this.titleService.setTitle(this.doctor.fullName + ' | Doctor');
   }
 
@@ -106,7 +107,8 @@ export class DoctorDashboardComponent {
     this.informationForm.controls['workingDays'].setValue(this.doctor.workingDays);
     this.informationForm.controls['workingHours'].setValue(this.doctor.workingHours);
     this.informationForm.controls['description'].setValue(this.doctor.description);
-    this.informationForm.controls['cellularNumber'].setValue(this.doctor.cellularNumber);
+    this.informationForm.controls['cellularNumber'].setValue(this.doctor.cellularNumber.substring(2));
+    this.informationForm.controls['fee'].setValue(this.doctor.fee);
   }
 
   setCredentialsFormValues(): void {
@@ -127,7 +129,17 @@ export class DoctorDashboardComponent {
 
   onInfoSubmit(formData: any): void {
     if (this.isValidInput(formData)) {
-      this.successMessageLeft = true;
+      formData.cellularNumber = this.countryCode + formData.cellularNumber;
+      this.api.updateDoctor(formData, localStorage.getItem('id')).subscribe(
+        (res: any) => {
+          this.noErrorRight = true;
+          if (res.token !== '') {
+            localStorage.setItem('token', res.token);
+            this.setupDashboard(res);
+            this.successMessageLeft = true;
+          }
+        }, (error: any) => { this.noErrorRight = false; this.apiErrorRight = error; }
+      );
       setTimeout(() => this.successMessageLeft = false, 3000);
     }
   }
@@ -160,7 +172,7 @@ export class DoctorDashboardComponent {
     this.validWorkingDays = (formData.workingDays === '') ? false : true;
     this.validWorkingHours = (formData.workingHours === '') ? false : true;
     this.validDescription = (formData.description === '') ? false : true;
-    this.validCellular = !this.inputValidation.isPhoneNumber(formData.cellularNumber) ? false : true;
+    this.validCellular = !(this.inputValidation.isPhoneNumber(formData.cellularNumber) && this.countryCode !== 'Code') ? false : true;
     this.validFee = (formData.fee === '') ? false : true;
     return this.validFullName &&
       this.validQualification &&
