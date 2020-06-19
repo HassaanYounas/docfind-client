@@ -81,7 +81,7 @@ export class DoctorDashboardComponent {
     this.doctor.setValues(
       res.fullName,
       res.email,
-      res.password,
+      '',
       res.cellularNumber,
       res.qualification,
       res.workingDays,

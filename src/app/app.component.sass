@@ -96,6 +96,15 @@ html
 .pointer
     cursor: pointer
 
+.no-underline, .no-underline:hover
+    text-decoration: none
+    color: #000000
+
+.card-body-custom
+    background-color: $bg-color-primary
+    border: 2px solid #000000
+    border-radius: 0px
+
 .section
     &-authenticate
         padding: 70px
@@ -106,6 +115,9 @@ html
         padding: 60px 0
     &-form
         padding: 0 135px
+    &-topbar
+        background-color: $fg-color-secondary
+        border-bottom: 3px solid #000000
 
 .form-control-custom
     font-weight: 600

@@ -1,0 +1,17 @@
+<div class="section-doctors-list mt-5 p-5">
+    <p class="h5 mb-3 text-center">List of all Doctors on DocFind</p>
+    <ul class="list-group px-5">
+        <a data-toggle="collapse" *ngFor="let doctor of doctors; let i = index" [href]="'#doctor' + i" class="list-item mb-3 mx-5 no-underline" title="Click to Expand">
+            🧠 {{ doctor.fullName }} | {{ doctor.qualification }} | {{ doctor.description }} | {{ doctor.avgRating }} ⭐
+            <div class="collapse" [id]="'doctor' + i">
+                <div class="card card-body mt-2 card-body-custom py-2 px-3">
+                    <p class="m-0">Email: {{ doctor.email }}</p>
+                    <p class="m-0">Cellular Number: +{{ doctor.cellularNumber }}</p>
+                    <p class="m-0">Address: {{ doctor.address }}</p>
+                    <p class="m-0">Working Days: {{ doctor.workingDays }} | Working Hours: {{ doctor.workingHours }}</p>
+                    <p class="m-0">Fee: {{ doctor.fee }}</p>
+                </div>
+            </div>
+        </a>
+    </ul>
+</div>

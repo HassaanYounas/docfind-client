@@ -12,6 +12,8 @@ import { DoctorDashboardComponent } from './components/user/doctor-dashboard/doc
 import { PatientDashboardComponent } from './components/user/patient-dashboard/patient-dashboard.component';
 import { AboutComponent } from './components/about/about.component';
 import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
+import { PatientDashboardDoctorsListComponent } from './components/user/patient-dashboard/patient-dashboard-doctors-list/patient-dashboard-doctors-list.component';
+import { PatientDashboardSettingsComponent } from './components/user/patient-dashboard/patient-dashboard-settings/patient-dashboard-settings.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-poli
     PatientDashboardComponent,
     AboutComponent,
     PrivacyPolicyComponent,
+    PatientDashboardDoctorsListComponent,
+    PatientDashboardSettingsComponent,
   ],
   imports: [
     BrowserModule,

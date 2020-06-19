@@ -9,5 +9,6 @@
     "updateDoctorCredentials": "http://localhost:4000/api/doctor/update/credentials",
     "updateDoctor": "http://localhost:4000/api/doctor/update",
     "getDoctorByID": "http://localhost:4000/api/doctor/get",
-    "addRating": "http://localhost:4000/api/doctor/update/rating"
+    "addRating": "http://localhost:4000/api/doctor/update/rating",
+    "getAllDoctors": "http://localhost:4000/api/doctor/get/all"
 }

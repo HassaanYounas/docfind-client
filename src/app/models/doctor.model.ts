@@ -9,13 +9,14 @@ export class Doctor {
     address: string;
     fee: number;
     description: string;
-    ratings: string[]
+    ratings: string[];
+    avgRating: number
 
     constructor() {
         this.fullName = this.email = this.password = '';
         this.cellularNumber = this.qualification = this.workingDays = '';
         this.workingHours = this.address = this.description = '';
-        this.fee = 0;
+        this.fee = this.avgRating = 0;
         this.ratings = new Array<string>();
     }
 

@@ -111,6 +111,15 @@ export class APIService {
 
   }
 
+  getAllDoctors() {
+    const url = API.getAllDoctors;
+    const headers = new HttpHeaders({ 
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
+    });
+    return this.http.post(url, {}, { headers }).pipe(catchError(this.errorHandler));
+  }
+
   private errorHandler(error: HttpErrorResponse) {
     return throwError(error.error.message);
   }

@@ -1,1 +1,19 @@
-<p>patient-dashboard works!</p>
+<div>
+    <div class="section-topbar">
+        <div class="container d-flex justify-content-between align-items-center pt-3 pb-2">
+            <h3 [innerHTML]="patientName"></h3>
+            <div>
+                <a [ngClass]="{'current-patient-dashboard-link': showDoctorsList}" class="text-black pointer h5 patient-dashboard-links" (click)="gotoDoctorsList()">Doctors List</a>
+                <a [ngClass]="{'current-patient-dashboard-link': showSettings}" class="text-black pointer h5 ml-5 patient-dashboard-links" (click)="gotoSettings()">Settings</a>
+                <a class="text-black pointer h5 ml-5 patient-dashboard-links" (click)="logOut()">Log Out</a>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <app-patient-dashboard-doctors-list [ngClass]="{'d-none': !showDoctorsList}" [patient]="patient" [doctors]="doctors"></app-patient-dashboard-doctors-list>
+        <app-patient-dashboard-settings [ngClass]="{'d-none': !showSettings}" [patient]="patient"></app-patient-dashboard-settings>
+    </div>
+    <svg class="mb-5 pb-5" viewBox="0 0 1440 220">
+        <path fill="#e98074" d="M0,256L0,192L80,192L80,160L160,160L160,256L240,256L240,32L320,32L320,160L400,160L400,64L480,64L480,64L560,64L560,96L640,96L640,128L720,128L720,64L800,64L800,192L880,192L880,128L960,128L960,64L1040,64L1040,96L1120,96L1120,224L1200,224L1200,32L1280,32L1280,320L1360,320L1360,256L1440,256L1440,0L1360,0L1360,0L1280,0L1280,0L1200,0L1200,0L1120,0L1120,0L1040,0L1040,0L960,0L960,0L880,0L880,0L800,0L800,0L720,0L720,0L640,0L640,0L560,0L560,0L480,0L480,0L400,0L400,0L320,0L320,0L240,0L240,0L160,0L160,0L80,0L80,0L0,0L0,0Z"></path>
+    </svg>  
+</div>
