@@ -1,6 +1,3 @@
-# docfind-client
-Angular client application for DocFind.
-
 # DocFind Client
 This application was just created for a Full Stack Web Development course. I'am still pretty new to Angular and Nodejs. So this was a good exercise.
 ___
