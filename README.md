@@ -6,7 +6,7 @@ The technologies used are:
 * HTML
 * SCSS
 * TypeScript
-* JavaScript
+* Angular 9
 
 ___
 ## About
